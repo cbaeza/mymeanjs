@@ -2,6 +2,9 @@ express 		= require('express')
 methodOverride 	= require('method-override')
 bodyParser		= require('body-parser')
 
+env = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
+config = require('./config/config')[env]
+
 app 	= express()
 
 # configure app
