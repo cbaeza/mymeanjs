@@ -16,12 +16,11 @@ angular.module('mymeanjs', ['module.dummy', 'ngRoute']).config([
   '$scope', 'DummySrvc', function($scope, dummySrvc) {
     console.log('DummyCtrl init');
     return $scope.sayHello = function() {
-      dummySrvc();
       return "hello from controller !";
     };
   }
 ]);
-;angular.module('module.dummy', []).run(console.log("runing"), DummyCtrl.sayHello());
+;angular.module('module.dummy', []);
 ;angular.module('module.dummy').service('DummySrvc', [
   this.sayHello = function() {
     return console.log("service say hello!");
