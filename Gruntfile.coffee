@@ -75,12 +75,23 @@ module.exports = (grunt) ->
 		concat:
 			options:
 				separator: ';'
-			scripts:
-				src: 	[
-					'.temp/client/app.js'
-					'.temp/client/**/*.js'
+
+			# concatenate modules
+			dummy:
+				src:[
+					'.temp/client/js/modules/dummy/dummy.js'
+					'.temp/client/js/modules/dummy/service.js'
+					'.temp/client/js/modules/dummy/controller.js'
 				]
-				dest: 	'.temp/app.js'
+				dest: 'public/modules/dummy/dummy.module.js'
+
+			# concatenate modules with app
+			scripts:
+				src: [
+					'public/modules/dummy/dummy.module.js'
+					'.temp/client/client.js'
+				]
+				dest: 	'public/app.js'
 
 	grunt
 		.registerTask('default', ['uglify'])
@@ -88,6 +99,7 @@ module.exports = (grunt) ->
 			#'compass:dist'
 			'jade'
 			'coffee:client'
+			'concat:dummy'
 			'concat:scripts'
 			'replace:escape'
 			'includes:templates'

@@ -1,4 +1,4 @@
-angular.module('module.dummy').controller('DummyCtrl', [
+angular.module('module.dummy.controller').controller('DummyCtrl', [
 	'$scope'
 	'DummySrvc'
 	( $scope, dummySrvc ) ->
