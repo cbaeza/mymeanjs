@@ -1,1 +1,5 @@
-angular.module('module.dummy.service', [])
+angular.module('module.dummy').service( 'DummySrvc', [
+
+	@sayHello = ( ) ->
+		console.log "service say hello!"
+])

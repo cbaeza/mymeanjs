@@ -1,5 +1,9 @@
-angular.module('module.dummy.controller').controller('DummyCtrl', [
+angular.module('module.dummy').controller('DummyCtrl', [
 	'$scope'
-	( $scope ) ->
+	'DummySrvc'
+	( $scope, dummySrvc ) ->
 		console.log 'DummyCtrl init'
+
+		$scope.sayHello = ( )->
+			return "hello from controller !"
 ])

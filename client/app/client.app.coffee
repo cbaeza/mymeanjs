@@ -9,8 +9,7 @@ angular.module('mymeanjs', [
 			$rp
 				.when '/',
 					templateUrl: '/partials/dummy/dummy.html'
-					controller: 'DummyCtrl'
-					# module: 'module.dummy'
+					# controller: 'DummyCtrl'
 
 				.otherwise
 					redirectTo: '/'
