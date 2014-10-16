@@ -1,4 +1,4 @@
-angular.module('module.dummy.service').service( 'DummySrvc', [
+angular.module('module.dummy.service', []).service( 'DummySrvc', [
 	'$q'
 	'$http'
 	( $q, $http ) ->

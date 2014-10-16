@@ -22,3 +22,4 @@ require('./routes')(app)
 # start server
 app.listen 3030, ( ) ->
 	console.log "Server started, listen on port #{app.get('port')}"
+	console.log config

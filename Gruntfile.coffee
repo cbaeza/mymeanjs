@@ -80,8 +80,8 @@ module.exports = (grunt) ->
 			dummy:
 				src:[
 					'.temp/client/js/modules/dummy/dummy.js'
-					'.temp/client/js/modules/dummy/service.js'
 					'.temp/client/js/modules/dummy/controller.js'
+					'.temp/client/js/modules/dummy/service.js'
 				]
 				dest: 'public/modules/dummy/dummy.module.js'
 
