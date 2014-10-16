@@ -2,7 +2,7 @@
 
 module.exports = (grunt) ->
 	# load all grunt tasks locate in packages.json 'devDependencies' automatically
-	require('load-grunt-tasks')(grunt)
+	require('load-grunt-tasks') (grunt)
 
 	grunt.initConfig
 		pkg: grunt.file.readJSON('package.json')
@@ -43,8 +43,8 @@ module.exports = (grunt) ->
 				src: ['.temp/templates/**/*.html']
 				overwrite: 	true
 				replacements: [
-					from: 	new RegExp("'", "g" ) #/'/g
-					to:		"\\'"
+					from: 	new RegExp("'", "g" ) #/' / g
+					to: 		"\\'"
 				]
 
 		jade:
@@ -78,7 +78,7 @@ module.exports = (grunt) ->
 
 			# concatenate modules
 			dummy:
-				src:[
+				src: [
 					'.temp/client/js/modules/dummy/dummy.js'
 					'.temp/client/js/modules/dummy/controller.js'
 					'.temp/client/js/modules/dummy/service.js'

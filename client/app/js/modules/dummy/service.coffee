@@ -3,6 +3,8 @@ angular.module('module.dummy.service', []).service( 'DummySrvc', [
 	'$http'
 	( $q, $http ) ->
 
-		@sayHello = ( ) ->
+		@sayHello = () ->
 			console.log "service say hello!"
+
+		return
 ])
