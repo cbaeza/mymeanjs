@@ -9,3 +9,11 @@ A scalable and modularizable architecture for nodejs and angularjs app.
     sudo npm -g install nodemon
     sudo npm -g install express
     sudo npm -g install grunt-cli
+
+# Compile 
+
+    grunt build-client
+    
+# Start server
+
+    nodemon server/server.coffee
