@@ -85,6 +85,12 @@ module.exports = (grunt) ->
 				]
 				dest: 'public/modules/dummy/dummy.module.js'
 
+			others:
+				src: [
+					'.temp/client/js/modules/**/*.js'
+				]
+				dest: 'public/modules/dummy/dummy.module.js'
+
 			# concatenate modules with app
 			scripts:
 				src: [
@@ -93,8 +99,16 @@ module.exports = (grunt) ->
 				]
 				dest: 	'public/app.js'
 
+		watch:
+			clientApp:
+				files: [ 'client/**/*.coffee', 'client/**/*.jade' ]
+				tasks: [ 'build-client' ]
+				options:
+					livereload: true
+
 	grunt
 		.registerTask('default', ['uglify'])
+		.registerTask( 'client-watch', [ 'watch:clientApp' ])
 		.registerTask( 'build-client', [
 			#'compass:dist'
 			'jade'
