@@ -3,9 +3,9 @@ angular.module('module.dummy', ['module.dummy.controller', 'module.dummy.service
   '$scope', 'DummySrvc', function($scope, dummySrvc) {
     console.log('DummyCtrl init');
     dummySrvc.sayHello();
-    $scope.status = "ready to go!";
+    $scope.status = "ready to go from DummyCtrl controller!";
     return $scope.sayHello = function() {
-      return "hello from controller !";
+      return "hello from DummyCtrl controller!";
     };
   }
 ]);
@@ -16,7 +16,7 @@ angular.module('module.dummy', ['module.dummy.controller', 'module.dummy.service
     };
   }
 ]);
-;angular.module('mymeanjs', ['module.dummy', 'ngRoute']).config([
+;;angular.module('mymeanjs', ['module.dummy', 'ngRoute']).config([
   '$routeProvider', '$locationProvider', function($rp, $lp) {
     $rp.when('/', {
       templateUrl: '/partials/dummy/dummy.html',

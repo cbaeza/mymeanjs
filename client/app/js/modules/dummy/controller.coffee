@@ -6,7 +6,7 @@ angular.module('module.dummy.controller', ['module.dummy.service']).controller('
 
 		dummySrvc.sayHello()
 
-		$scope.status = "ready to go!"
+		$scope.status = "ready to go from DummyCtrl controller!"
 		$scope.sayHello = ( ) ->
-			return "hello from controller !"
+			return "hello from DummyCtrl controller!"
 ])

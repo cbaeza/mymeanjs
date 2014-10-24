@@ -85,16 +85,18 @@ module.exports = (grunt) ->
 				]
 				dest: 'public/modules/dummy/dummy.module.js'
 
-			others:
+			main:
 				src: [
-					'.temp/client/js/modules/**/*.js'
+					'.temp/client/js/modules/main/main.controller.js'
+					'.temp/client/js/modules/main/main.service.js'
 				]
-				dest: 'public/modules/dummy/dummy.module.js'
+				dest: 'public/modules/main/main.module.js'
 
 			# concatenate modules with app
 			scripts:
 				src: [
 					'public/modules/dummy/dummy.module.js'
+					'public/modules/main/main.module.js'
 					'.temp/client/client.js'
 				]
 				dest: 	'public/app.js'
@@ -114,6 +116,7 @@ module.exports = (grunt) ->
 			'jade'
 			'coffee:client'
 			'concat:dummy'
+			'concat:main'
 			'concat:scripts'
 			'replace:escape'
 			'includes:templates'
