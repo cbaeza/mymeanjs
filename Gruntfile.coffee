@@ -79,7 +79,7 @@ module.exports = (grunt) ->
 			# concatenate modules
 			dummy:
 				src: [
-					'.temp/client/js/modules/dummy/dummy.js'
+          '.temp/client/js/modules/dummy/dummy.js'
 					'.temp/client/js/modules/dummy/controller.js'
 					'.temp/client/js/modules/dummy/service.js'
 				]
@@ -87,8 +87,9 @@ module.exports = (grunt) ->
 
 			main:
 				src: [
-					'.temp/client/js/modules/main/main.controller.js'
-					'.temp/client/js/modules/main/main.service.js'
+          '.temp/client/js/modules/main/main.js'
+					'.temp/client/js/modules/main/controller.js'
+					'.temp/client/js/modules/main/service.js'
 				]
 				dest: 'public/modules/main/main.module.js'
 
@@ -99,7 +100,7 @@ module.exports = (grunt) ->
 					'public/modules/main/main.module.js'
 					'.temp/client/client.js'
 				]
-				dest: 	'public/app.js'
+				dest: 'public/app.js'
 
 		watch:
 			clientApp:
