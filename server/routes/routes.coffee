@@ -7,4 +7,5 @@ module.exports = ( app ) ->
 	app.get '*', (req, res) ->
 		res.render 'index'
 
-	return api(app)
+  require('../api/v1/api.v1')
+

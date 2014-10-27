@@ -5,5 +5,6 @@ userModel = new UserModel()
 
 module.exports = () ->
 
-	select: ( req, res ) ->
-		res.status(200).json({ message: 'all ist ok'})
+	return handlers =
+		select: ( req, res ) ->
+			res.status(200).json({ message: 'all ist ok'})
