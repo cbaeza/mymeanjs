@@ -2,7 +2,7 @@
   "name": "mymeanjs",
   "version": "0.0.0",
   "description": "Modern client/server base architecture based on nodejs on server side and angularjs on frontend side",
-  "main": "app.js", 
+  "main": "app.js",
   "scripts": {
     "start": "nodemon server/server.coffee",
     "test": "test-app"
@@ -29,7 +29,8 @@
     "grunt-cli": "~0.1.13",
     "jade": "^1.7.0",
     "method-override": "^2.2.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "mongoose": "~3.8.18"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0",

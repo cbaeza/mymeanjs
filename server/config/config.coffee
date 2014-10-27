@@ -1,7 +1,7 @@
 module.exports =
 	development:
 		port: 	process.env.PORT || 3030
-		db:		'mongodb://'
+		db:		'mongodb://localhost/mymean'
 
 	production:
 		port:	process.env.PORT || 80
