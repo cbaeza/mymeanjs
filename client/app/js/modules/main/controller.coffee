@@ -1,4 +1,4 @@
-angular('module.main.controller', ['module.main.service']).controller('MainCtrl', [
+angular.module('module.main.controller', ['module.main.service']).controller('MainCtrl', [
 	'$scope'
 	'MainSrvc'
 	( $scope, mainService ) ->
