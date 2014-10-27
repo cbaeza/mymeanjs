@@ -33,7 +33,7 @@ angular.module('module.dummy', ['module.dummy.controller', 'module.dummy.service
     };
   }
 ]);
-;angular.module('mymeanjs', ['module.dummy', 'module.main', 'ngRoute']).config([
+;angular.module('mymeanjs', ['module.dummy', 'ngRoute']).config([
   '$routeProvider', '$locationProvider', function($rp, $lp) {
     $rp.when('/', {
       templateUrl: '/partials/dummy/dummy.html',

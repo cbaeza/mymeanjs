@@ -3,5 +3,5 @@ bower_components
 .DS_Store
 .temp
 .idea
-public/js/app.js
+public
 npm-debug.log
