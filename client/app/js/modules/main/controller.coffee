@@ -1,6 +1,6 @@
 angular('module.main.controller', ['module.main.service']).controller('MainCtrl', [
 	'$scope'
-	'MainService'
+	'MainSrvc'
 	( $scope, mainService ) ->
 		console.log 'MainCtrl init'
 

@@ -1,6 +1,6 @@
 angular.module('mymeanjs', [
 	'module.dummy'
-  'module.main'
+	'module.main'
 	'ngRoute'
 	]).config([
 		'$routeProvider'

@@ -18,7 +18,7 @@ angular.module('module.dummy', ['module.dummy.controller', 'module.dummy.service
 ]);
 ;angular.module('module.main', ['module.main.controller', 'module.main.service']);
 ;angular('module.main.controller', ['module.main.service']).controller('MainCtrl', [
-  '$scope', 'MainService', function($scope, mainService) {
+  '$scope', 'MainSrvc', function($scope, mainService) {
     console.log('MainCtrl init');
     $scope.status = "ready to go from Main controller!";
     return $scope.sayHello = function() {
