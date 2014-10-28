@@ -7,7 +7,7 @@ api = "/api/#{version}"
 module.exports = ( app ) ->
 
 	app
-		.get( api , ( req, res ) -> res.json({'version': version }))
-		.get( api + '/version', ( req, res ) -> res.json({'version': version }))
+		.get( api 				, ( req, res ) -> res.json({'version': version }))
+		.get( api + '/version'	, ( req, res ) -> res.json({'version': version }))
 
-		.get( api + "/users", UserCtrl.select )
+		.get( api + "/users"	, UserCtrl.select )
