@@ -1,5 +1,4 @@
-
-api = require('../api/v1/api.v1')
+# place for default routes
 
 module.exports = ( app ) ->
 
@@ -7,5 +6,5 @@ module.exports = ( app ) ->
 	app.get '*', (req, res) ->
 		res.render 'index'
 
-  require('../api/v1/api.v1')
+
 

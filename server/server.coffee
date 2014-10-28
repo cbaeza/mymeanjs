@@ -13,18 +13,25 @@ app 	= express()
 app.set 'port', 3030
 app.set 'view engine', 'jade'
 app.set 'views', "./server/views"
+
 # use methodOverride to simplify access to http methods
 app.use methodOverride()
+
 # parse application/json
 app.use bodyParser.json()
+
 # all static resources
 app.use express.static( "./public" )
 app.use express.static( "./bower_components" )
 
 # configure mongodb via mongoose
 require('./config/mongo')( config, mongoose )
-# routes
-require('./routes/routes')(app)
+
+# api, define api always first as default routes
+require('./api/v1/api.v1')( app )
+
+# default routes
+require('./routes/routes')( app )
 
 # start server
 app.listen 3030, ( ) ->
