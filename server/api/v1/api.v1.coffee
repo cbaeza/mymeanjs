@@ -1,6 +1,6 @@
 # Api version 1
 
-UserCtrl = require('../../controllers/users/user.ctrl')
+UserCtrl = require('./users/user.ctrl')
 version = 'v1'
 api = "/api/#{version}"
 

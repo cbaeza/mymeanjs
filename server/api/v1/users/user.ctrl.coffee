@@ -1,6 +1,6 @@
 # User controller
 
-UserModel = require('../../models/users/user.mdl')
+UserModel = require('./user.mdl')
 userModel = new UserModel()
 
 module.exports =
