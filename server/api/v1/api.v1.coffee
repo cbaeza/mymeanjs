@@ -6,7 +6,7 @@ api = "/api/#{version}"
 
 versioninfo = {
 	'version': version
-	'date': Date.now()
+	'date': '29.10.2014'
 }
 
 module.exports = ( app ) ->
