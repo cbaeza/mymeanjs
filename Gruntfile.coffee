@@ -63,44 +63,26 @@ module.exports = (grunt) ->
 				expand: 	true
 				ext: 		'.html'
 
-		includes:
-			# include templates to routes, directives ...
-			templates:
-				options:
-					includeRegexp: /['"]\[\[([^'"]+)\]\]['"]/
-					debug: true
-				files:
-					"public/js/app.js" : ".temp/app.js"
+#		includes:
+#			# include templates to routes, directives ...
+#			templates:
+#				options:
+#					includeRegexp: /['"]\[\[([^'"]+)\]\]['"]/
+#					debug: true
+#				files:
+#					"public/js/app.js" : ".temp/app.js"
 
 		concat:
 			options:
 				separator: ';'
 
-			# concatenate modules
-			dummy:
+			# concatenate all modules
+			all:
 				src: [
-					'.temp/client/js/modules/dummy/dummy.js'
-					'.temp/client/js/modules/dummy/controller.js'
-					'.temp/client/js/modules/dummy/service.js'
+					'.temp/client/js/modules/**/*.js'
+					'.temp/client/app.js'
 				]
-				dest: 'public/modules/dummy/dummy.module.js'
-
-			main:
-				src: [
-					'.temp/client/js/modules/main/main.js'
-					'.temp/client/js/modules/main/controller.js'
-					'.temp/client/js/modules/main/service.js'
-				]
-				dest: 'public/modules/main/main.module.js'
-
-			# concatenate modules with app
-			scripts:
-				src: [
-					'public/modules/dummy/dummy.module.js'
-					'public/modules/main/main.module.js'
-					'.temp/client/client.js'
-				]
-				dest: 'public/app.js'
+				dest: 'public/clientapp.js'
 
 		watch:
 			clientApp:
@@ -116,9 +98,7 @@ module.exports = (grunt) ->
 			#'compass:dist'
 			'jade'
 			'coffee:client'
-			'concat:dummy'
-			'concat:main'
-			'concat:scripts'
+			'concat:all'
 			'replace:escape'
-			'includes:templates'
+			#'includes:templates'
 		])
