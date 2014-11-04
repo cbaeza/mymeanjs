@@ -1,7 +1,13 @@
 angular.module('mymeanjs', [
+
+	# external modules
+	'ngRoute'
+	'ui.bootstrap'
+
+	# local modules
 	'module.dummy'
 	'module.main'
-	'ngRoute'
+
 	]).config([
 		'$routeProvider'
 		'$locationProvider'
