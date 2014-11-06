@@ -1,10 +1,12 @@
 # User controller
 
 UserModel = require('./user.mdl')
-userModel = new UserModel()
+_userModel = new UserModel()
 
 module.exports =
 
 	select: ( req, res ) ->
 		console.log("select !")
-		res.status(200).json({ message: 'all ist ok'})
+		_userModel.getAllUsers ( error, data ) ->
+			return res.status(400).json({ 'message' : error }) if error
+			return res.status(200).send( data )

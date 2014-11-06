@@ -2,7 +2,7 @@
 
 mongoose = require('mongoose')
 
-userSchema = new mongoose.Schema(
+_schema = new mongoose.Schema(
 
 	name:
 		type: String
@@ -26,4 +26,12 @@ userSchema = new mongoose.Schema(
 
 )
 
-module.exports = mongoose.model('User', userSchema)
+_schema.methods =
+
+	getAllUsers: ( cb ) ->
+		this.model( _schema ).find ( error, data ) ->
+			return cb( error ) if error
+			return cb( null, data )
+
+
+module.exports = mongoose.model('users', _schema)
