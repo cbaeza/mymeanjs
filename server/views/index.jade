@@ -4,8 +4,13 @@ html(lang="en" ng-app="mymeanjs")
 		title My mean
 
 		meta( name="fragment" content="!" )
+		meta( http-equiv="X-UA-Compatible" content="IE=edge" )
+		meta( name="viewport" content="width=device-width, initial-scale=1" )
+		meta( name="description" content="" )
+		meta( name="author" content="carlos baeza - carlos.baeza@posteo.de" )
 
-		link( rel="stylesheet" href="/bootstrap/dist/css/bootstrap.css" )
+		link( rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" )
+		link( rel="stylesheet" href="/css/jumbotron.css" )
 
 		script( src="/lodash/dist/lodash.js")
 		script( src="/angular/angular.js")
@@ -18,5 +23,21 @@ html(lang="en" ng-app="mymeanjs")
 		script( src="/clientapp.js")
 
 	body
-		div.container
-			div(ng-view)
+		nav( class="navbar navbar-inverse navbar-fixed-top" role="navigation" )
+			div.container
+				div.navbar-header
+					button( type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" )
+						span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+					a( class="navbar-brand" href="#" ) My mean
+				div( id="navbar" class="navbar-collapse collapse" )
+					form( class="navbar-form navbar-right" role="form" )
+						div.form-group
+							input( type="text" placeholder="Email" class="form-control" )
+						div.form-group
+							input( type="password" placeholder="Password" class="form-control")
+						button( type="submit" class="btn btn-success") Sign in
+
+		div(ng-view)
