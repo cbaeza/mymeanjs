@@ -91,7 +91,7 @@ module.exports = (grunt) ->
 
 		watch:
 			clientApp:
-				files: [ 'client/**/*.coffee', 'client/**/*.jade' ]
+				files: [ 'client/**/*.coffee', 'client/**/*.jade', 'client/app/styles/**/*' ]
 				tasks: [ 'build-client' ]
 				options:
 					livereload: true
