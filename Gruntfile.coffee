@@ -50,14 +50,14 @@ module.exports = (grunt) ->
 		jade:
 			# compile client templates includes for routes, directives, dialogs ...
 			includes:
-				cwd: 		'client/app/js/modules'
+				cwd: 		'client/app/templates'
 				src: 		'**/*.tpl.jade'
 				dest: 		'.temp/templates'
 				expand: 	true
 				ext: 		'.html'
 
 			partials:
-				cwd: 		'client/app/js/modules'
+				cwd: 		'client/app/templates'
 				src: 		'**/*.tpl.jade'
 				dest: 		'public/partials'
 				expand: 	true
