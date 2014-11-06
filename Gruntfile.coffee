@@ -71,6 +71,11 @@ module.exports = (grunt) ->
 #					debug: true
 #				files:
 #					"public/js/app.js" : ".temp/app.js"
+		includes:
+			files:
+				cwd: 'client/app/styles'
+				src: "**/*"
+				dest: "public/css"
 
 		concat:
 			options:
@@ -100,5 +105,6 @@ module.exports = (grunt) ->
 			'coffee:client'
 			'concat:all'
 			'replace:escape'
+			'includes:files'
 			#'includes:templates'
 		])
