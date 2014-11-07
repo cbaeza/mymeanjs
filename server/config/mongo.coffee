@@ -1,5 +1,7 @@
 
-module.exports = ( config, mongoose ) ->
+mongoose = require('mongoose')
+
+module.exports = ( config ) ->
 
 	mongoose.connect( config.db )
 

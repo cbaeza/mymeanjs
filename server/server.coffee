@@ -1,7 +1,6 @@
 express 		= require('express')
 methodOverride 	= require('method-override')
 bodyParser		= require('body-parser')
-mongoose		= require('mongoose')
 
 env = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 # init config passing current environment
@@ -25,10 +24,13 @@ app.use express.static( "./public" )
 app.use express.static( "./bower_components" )
 
 # configure mongodb via mongoose
-require('./config/mongo')( config, mongoose )
+require('./config/mongo')( config )
+
+#passport, authentication framework
+passport = require('./config/passport')( config, app )
 
 # api, define api always first as default routes
-require('./api/v1/api.v1')( app )
+require('./api/v1/api.v1')( app, passport )
 
 # default routes
 require('./routes/routes')( app )
