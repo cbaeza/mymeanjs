@@ -37,45 +37,43 @@ module.exports = (grunt) ->
 				dest: '.temp/client'
 				ext: '.js'
 
-		replace:
-			# escape single quotes in templates for inclusion
-			escape:
-				src: ['.temp/templates/**/*.html']
-				overwrite: 	true
-				replacements: [
-					from: 	new RegExp("'", "g" ) #/' / g
-					to: 		"\\'"
-				]
+#		replace:
+#			# escape single quotes in templates for inclusion
+#			escape:
+#				src: ['.temp/templates/**/*.html']
+#				overwrite: 	true
+#				replacements: [
+#					from: 	new RegExp("'", "g" ) #/' / g
+#					to: 		"\\'"
+#				]
 
 		jade:
 			# compile client templates includes for routes, directives, dialogs ...
-			includes:
-				cwd: 		'client/app/templates'
-				src: 		'**/*.tpl.jade'
-				dest: 		'.temp/templates'
-				expand: 	true
-				ext: 		'.html'
+			templates:
+				cwd: 	'client/'
+				src: 	['**/*.tpl.jade','!**/*.inl.tpl.jade']
+				dest: 	'public/partials'
+				expand: true
+				ext: 	'.html'
 
-			partials:
-				cwd: 		'client/app/templates'
-				src: 		'**/*.tpl.jade'
-				dest: 		'public/partials'
-				expand: 	true
-				ext: 		'.html'
+			inline:
+				cwd: 	'client/'
+				src: 	'**/*.inl.tpl.jade'
+				dest: 	'.temp/client'
+				expand: true
+				ext: 	''
 
-#		includes:
-#			# include templates to routes, directives ...
-#			templates:
-#				options:
-#					includeRegexp: /['"]\[\[([^'"]+)\]\]['"]/
-#					debug: true
-#				files:
-#					"public/js/app.js" : ".temp/app.js"
 		includes:
 			files:
 				cwd: 'client/app/styles'
 				src: "**/*"
 				dest: "public/css"
+
+			inline:
+				options:
+					includeRegexp: /['"]\[\[([^'"]+)\]\]['"]/
+					debug: true
+				files: [ '.temp/client/clientapp.js' : '.temp/client/clientapp.js' ]
 
 		concat:
 			options:
@@ -84,10 +82,15 @@ module.exports = (grunt) ->
 			# concatenate all modules
 			all:
 				src: [
-					'.temp/client/js/modules/**/*.js'
 					'.temp/client/app.js'
+					'.temp/client/MainClientController.js'
+					'.temp/client/js/modules/**/*.js'
 				]
-				dest: 'public/clientapp.js'
+				dest: '.temp/client/clientapp.js'
+
+		copy:
+			scripts:
+				files: ['public/clientapp.js' : '.temp/client/clientapp.js']
 
 		watch:
 			clientApp:
@@ -101,10 +104,12 @@ module.exports = (grunt) ->
 		.registerTask( 'client-watch', [ 'watch:clientApp' ])
 		.registerTask( 'build-client', [
 			#'compass:dist'
-			'jade'
+			'jade:inline'
+			'jade:templates'
 			'coffee:client'
 			'concat:all'
-			'replace:escape'
+			#'replace:escape'
 			'includes:files'
-			#'includes:templates'
+			'includes:inline'
+			'copy:scripts'
 		])

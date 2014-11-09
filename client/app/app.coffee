@@ -5,6 +5,7 @@ angular.module('mymeanjs', [
 	'ui.bootstrap'
 
 	# local modules
+	'app.header'
 	'module.dummy'
 	'module.main'
 
