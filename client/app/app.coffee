@@ -22,7 +22,10 @@ angular.module('mymeanjs', [
 				.otherwise
 					redirectTo: '/'
 
-			$lp.html5Mode( true )
+			$lp.html5Mode({
+				enabled: true,
+				requireBase: true
+			});
 			$lp.hashPrefix( '!' )
 
 			return
