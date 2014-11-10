@@ -9,5 +9,8 @@ angular
 			controller: ['$scope'
 				( $scope ) ->
 					console.log("directive controller init")
+
+					$scope.authenticate = ( event ) ->
+						console.log("authenticate: #{event}")
 			]
 	])

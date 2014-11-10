@@ -1,16 +1,21 @@
 nav( class="navbar navbar-inverse navbar-fixed-top" role="navigation" )
 	div.container
 		div.navbar-header
-			button( type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" )
+			button.navbar-toggle.collapsed( type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" )
 				span.sr-only Toggle navigation
 					span.icon-bar
 					span.icon-bar
 					span.icon-bar
-			a( class="navbar-brand" href="#" ) My mean
-		div( id="navbar" class="navbar-collapse collapse" )
-			form( class="navbar-form navbar-right" role="form" )
+			a.navbar-brand( href="/" ) My mean
+
+		div.navbar-collapse.collapse( id="navbar" )
+
+			form.navbar-form.navbar-right( role="form" )
+
 				div.form-group
-					input( type="text" placeholder="Email" class="form-control" )
+					input.form-control( type="text" placeholder="Email" )
+
 				div.form-group
-					input( type="password" placeholder="Password" class="form-control")
-				button( type="submit" class="btn btn-success") Sign in
+					input.form-control( type="password" placeholder="Password" )
+
+				button.btn.btn-success( type="submit" ng-click="authenticate($event)") Sign in
