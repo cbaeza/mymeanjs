@@ -6,8 +6,8 @@ angular
 			replace: true
 			template: '"[[app/js/modules/header/header]]"'
 			scope: {}
-			controller: angular.module('app.header').controller('HeaderController', [
+			controller: ['$scope'
 				( $scope ) ->
 					console.log("directive controller init")
-			])
+			]
 	])
