@@ -5,7 +5,7 @@ angular.module('mymeanjs', [
 	'ui.bootstrap'
 
 	# local modules
-	'app.header'
+	# 'app.header' # Deprecated, bad idea !, delegate all in MainController
 	'module.dummy'
 	'module.main'
 
