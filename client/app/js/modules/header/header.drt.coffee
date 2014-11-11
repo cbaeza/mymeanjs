@@ -6,11 +6,12 @@ angular
 			replace: true
 			template: '"[[app/js/modules/header/header]]"'
 			scope: {}
-			controller: ['$scope'
-				( $scope ) ->
-					console.log("directive controller init")
-
-					$scope.authenticate = ( event ) ->
-						console.log("authenticate: #{event}")
-			]
+			require: 'MainClientController'
+#			controller: ['$scope'
+#				( $scope ) ->
+#					console.log("directive controller init")
+#
+#					$scope.authenticate = ( event ) ->
+#						console.log("authenticate: #{event}")
+#			]
 	])

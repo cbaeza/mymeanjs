@@ -16,7 +16,7 @@ angular.module('mymeanjs', [
 
 			$rp
 				.when '/',
-					templateUrl: '/partials/dummy.html'
+					templateUrl: '/partials/app/templates/dummy.html'
 					controller: 'DummyCtrl'
 
 				.otherwise
