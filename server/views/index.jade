@@ -41,9 +41,9 @@ html(lang="en" ng-app="mymeanjs")
 				div.navbar-collapse.collapse( id="navbar" )
 					form.navbar-form.navbar-right( role="form" )
 						div.form-group
-							input.form-control( type="text" placeholder="Email" )
+							input.form-control( type="text" placeholder="Email" ng-model="username" )
 						div.form-group
-							input.form-control( type="password" placeholder="Password" )
+							input.form-control( type="password" placeholder="Password" ng-model="password" )
 						button.btn.btn-success( type="submit" ng-click="authenticate($event)") Sign in
 
 		div(ng-view)
