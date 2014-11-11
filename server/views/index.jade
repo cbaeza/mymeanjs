@@ -39,11 +39,14 @@ html(lang="en" ng-app="mymeanjs")
 
 				// LOGIN FORM
 				div.navbar-collapse.collapse( id="navbar" )
-					form.navbar-form.navbar-right( role="form" )
+					form.navbar-form.navbar-right( name="loginForm" role="form" novalidate)
+
 						div.form-group
-							input.form-control( type="text" placeholder="Email" ng-model="username" )
+							input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.username" required)
+
 						div.form-group
-							input.form-control( type="password" placeholder="Password" ng-model="password" )
-						button.btn.btn-success( type="submit" ng-click="authenticate($event)") Sign in
+							input.form-control( type="password" placeholder="Password" ng-model="user.password" required)
+
+						button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid" ng-click="authenticate($event)") Sign in
 
 		div(ng-view)
