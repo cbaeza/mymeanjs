@@ -7,6 +7,11 @@ angular.module('mymeanjs').controller('MainClientController', [
 	( $scope ) ->
 		console.log('MainClientController init')
 
+		$scope.logggedUser = {
+			username: null
+			loggedOn: null
+		}
+
 		$scope.authenticate = ( event ) ->
 			console.log("authenticate MainClientController: #{event}")
 
