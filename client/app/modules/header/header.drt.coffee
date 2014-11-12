@@ -5,7 +5,7 @@ angular
 		() ->
 			restrict: 'AE'
 			replace: true
-			template: '"[[app/js/modules/header/header]]"'
+			template: '"[[app/modules/header/header]]"'
 			scope: {}
 			require: ['^MainClientController']
 			#link: ( scope, element, attrs, controllers ) ->
