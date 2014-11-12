@@ -83,7 +83,7 @@ module.exports = (grunt) ->
 			all:
 				src: [
 					'.temp/client/app.js'
-					'.temp/client/MainClientController.js'
+					'.temp/client/core/MainClientController.js'
 					'.temp/client/core/**/*.js'
 					'.temp/client/modules/**/*.js'
 				]
