@@ -14,12 +14,12 @@ angular
 				useremail: null
 				password: null
 				loggedOn: Date.now()
-				registerUser: false
+				registeredUser: false
 			}
 
 			$scope.authenticate = ( event ) ->
 				#console.log("authenticate MainClientController: "+ JSON.stringify($scope.user) )
 				AuthenticatorSrvc.authenticate($scope.user)
-				$scope.user.registerUser = true
+				$scope.user.registeredUser = true
 
 	])

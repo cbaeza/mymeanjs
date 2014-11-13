@@ -1,7 +1,7 @@
 // LOGIN FORM
 .navbar-collapse.collapse( id="navbar" )
 
-	div( ng-show="user.registerUser == false")
+	div( ng-show="user.registeredUser == false")
 		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate)
 
 			.form-group
@@ -15,7 +15,7 @@
 				ng-disabled="loginForm.$invalid"
 				ng-click="authenticate($event)")
 
-	div( ng-show="user.registerUser == true")
+	div( ng-show="user.registeredUser == true")
 		.navbar-form.navbar-right
 			.dropdown
 				button.btn.btn-primary.dropdown-toggle(type="button")
