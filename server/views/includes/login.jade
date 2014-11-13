@@ -5,7 +5,7 @@
 		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
 			.form-group
-				input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.useremail" required )
+				input.form-control( name="email" type="text" placeholder="Email" ng-model="user.email" required )
 
 			.form-group
 				input.form-control( type="password" placeholder="Password" ng-model="user.password" required )
@@ -19,7 +19,7 @@
 	div( ng-show="user.registeredUser == true" )
 		.navbar-form.navbar-right
 			.dropdown
-				button.btn.btn-primary.dropdown-toggle( type="button" )  {{user.useremail}}
+				button.btn.btn-primary.dropdown-toggle( type="button" )  {{user.email}}
 					span.glyphicon.glyphicon-cog
 				ul.dropdown-menu
 					li.dropdown-header( role="presentation" )

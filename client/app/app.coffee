@@ -5,6 +5,7 @@ angular
 		'ngRoute'
 		'ui.bootstrap'
 		'restangular'
+		'angular-md5'
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController

@@ -1,8 +1,7 @@
 # Model representing user in system
 
-mongoose = require('mongoose')
-
-_modelName = 'users'
+mongoose    = require('mongoose')
+_modelName  = 'users'
 
 _schema = new mongoose.Schema(
 
@@ -29,6 +28,12 @@ _schema = new mongoose.Schema(
 )
 
 _schema.methods =
+
+	authenticate: ( user, cb ) ->
+		this.model( _modelName ).findOne { email : user.email }, ( error, user ) ->
+			return cb( error ) if error?
+			return cb( new Error('user not found') ) if !user?
+			return cb( user )
 
 	getAllUsers: ( cb ) ->
 		this.model( _modelName ).find ( error, data ) ->
