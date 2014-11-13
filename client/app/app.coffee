@@ -1,32 +1,38 @@
-angular.module('mymeanjs', [
+angular
+	.module('mymeanjs', [
 
-	# external modules
-	'ngRoute'
-	'ui.bootstrap'
+		# external modules
+		'ngRoute'
+		'ui.bootstrap'
+		'restangular'
 
-	# local modules
-	# 'app.header' # Deprecated, bad idea !, delegate all in MainController
-	'module.dummy'
-	'module.main'
+		# local modules
+		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
+		'module.dummy'
+		'module.main'
 
-	]).config([
-		'$routeProvider'
-		'$locationProvider'
-		( $rp, $lp ) ->
+		]).config([
+			'$routeProvider'
+			'$locationProvider'
+			'RestangularProvider'
+			( $rp, $lp, restAngularProvider ) ->
 
-			$rp
-				.when '/',
-					templateUrl: '/partials/app/templates/dummy.html'
-					controller: 'DummyCtrl'
+				$rp
+					.when '/',
+						templateUrl: '/partials/app/templates/dummy.html'
+						controller: 'DummyCtrl'
 
-				.otherwise
-					redirectTo: '/'
+					.otherwise
+						redirectTo: '/'
 
-			$lp.html5Mode({
-				enabled: true,
-				requireBase: true
-			});
-			$lp.hashPrefix( '!' )
+				$lp.html5Mode({
+					enabled: true,
+					requireBase: true
+				});
+				$lp.hashPrefix( '!' )
 
-			return
+				# restangular base api url
+				restAngularProvider.setBaseUrl('http://localhost:3030/api/v1')
+
+				return
 ])

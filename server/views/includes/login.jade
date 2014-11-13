@@ -15,11 +15,12 @@
 				ng-disabled="loginForm.$invalid"
 				ng-click="authenticate($event)" )
 
+
 	div( ng-show="user.registeredUser == true" )
 		.navbar-form.navbar-right
 			.dropdown
-				button.btn.btn-primary.dropdown-toggle( type="button" )
-					span.glyphicon.glyphicon-cog  {{user.useremail}}
+				button.btn.btn-primary.dropdown-toggle( type="button" )  {{user.useremail}}
+					span.glyphicon.glyphicon-cog
 				ul.dropdown-menu
 					li.dropdown-header( role="presentation" )
 						span You account

@@ -2,7 +2,9 @@ angular
 	.module('mymeanjs')
 	.service('AuthenticatorSrvc', [
 		'$q'
-		( $q ) ->
+		'Restangular'
+		( $q, ra ) ->
+
 			console.log('AuthenticatorSrvc init')
 
 			@authenticate = ( user ) ->
