@@ -1,11 +1,26 @@
 // LOGIN FORM
-div.navbar-collapse.collapse( id="navbar" )
-	form.navbar-form.navbar-right( name="loginForm" role="form" novalidate)
+.navbar-collapse.collapse( id="navbar" )
 
-		div.form-group
-			input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.username" required)
+	div( ng-show="user.registerUser == false")
+		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate)
 
-		div.form-group
-			input.form-control( type="password" placeholder="Password" ng-model="user.password" required)
+			.form-group
+				input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.useremail" required)
 
-		button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid" ng-click="authenticate($event)") Sign in
+			.form-group
+				input.form-control( type="password" placeholder="Password" ng-model="user.password" required)
+
+			button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid" ng-click="authenticate($event)") Sign in
+
+	div( ng-show="user.registerUser == true")
+		.navbar-form.navbar-right
+			.dropdown
+				button.btn.btn-primary.dropdown-toggle(type="button") {{ user.useremail}}
+				ul.dropdown-menu
+					li.dropdown-header( role="presentation") You account
+					li( role="presentation" )
+						a( role="menuitem" tabindex="-1" href="#") Profile
+					li( role="presentation" )
+						a( role="menuitem" tabindex="-1" href="#") Payment
+					li( role="presentation" )
+						a( role="menuitem" tabindex="-1" href="#") Log out

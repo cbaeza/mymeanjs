@@ -11,13 +11,15 @@ angular
 			console.log('MainClientController init')
 
 			$scope.user = {
-				username: null
+				useremail: null
 				password: null
 				loggedOn: Date.now()
+				registerUser: false
 			}
 
 			$scope.authenticate = ( event ) ->
 				#console.log("authenticate MainClientController: "+ JSON.stringify($scope.user) )
 				AuthenticatorSrvc.authenticate($scope.user)
+				$scope.user.registerUser = true
 
 	])
