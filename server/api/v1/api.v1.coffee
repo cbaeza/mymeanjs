@@ -6,7 +6,7 @@ api = "/api/#{version}"
 
 versioninfo = {
 	'version': version
-	'date': '29.10.2014'
+	'build date': Date.now()
 }
 
 module.exports = ( app, passport ) ->
@@ -15,4 +15,5 @@ module.exports = ( app, passport ) ->
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
 
+		.get( api + "/users"	, UserCtrl.select)
 		#.get( api + "/users"	, passport.authenticate('local', { failureRedirect: '/login'}), UserCtrl.select)
