@@ -15,5 +15,5 @@ module.exports = ( app, passport ) ->
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
 
-		.get( api + "/users"	, UserCtrl.select)
+		.get( api + '/users'	, UserCtrl.select)
 		#.get( api + "/users"	, passport.authenticate('local', { failureRedirect: '/login'}), UserCtrl.select)
