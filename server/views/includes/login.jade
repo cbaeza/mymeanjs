@@ -1,33 +1,33 @@
 // LOGIN FORM
 .navbar-collapse.collapse( id="navbar" )
 
-	div( ng-show="user.registeredUser == false")
-		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate)
+	div( ng-show="user.registeredUser == false" )
+		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
 			.form-group
-				input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.useremail" required)
+				input.form-control( name="useremail" type="text" placeholder="Email" ng-model="user.useremail" required )
 
 			.form-group
-				input.form-control( type="password" placeholder="Password" ng-model="user.password" required)
+				input.form-control( type="password" placeholder="Password" ng-model="user.password" required )
 
 			button.btn.btn-success.glyphicon.glyphicon-log-in(
 				type="submit"
 				ng-disabled="loginForm.$invalid"
-				ng-click="authenticate($event)")
+				ng-click="authenticate($event)" )
 
-	div( ng-show="user.registeredUser == true")
+	div( ng-show="user.registeredUser == true" )
 		.navbar-form.navbar-right
 			.dropdown
-				button.btn.btn-primary.dropdown-toggle(type="button")
+				button.btn.btn-primary.dropdown-toggle( type="button" )
 					span.glyphicon.glyphicon-cog  {{user.useremail}}
 				ul.dropdown-menu
-					li.dropdown-header( role="presentation")
+					li.dropdown-header( role="presentation" )
 						span You account
 					li( role="presentation" )
-						a( role="menuitem" tabindex="-1" href="#")
+						a( role="menuitem" tabindex="-1" href="#" )
 							span.glyphicon.glyphicon-user  Profile
 					li( role="presentation" )
-						a( role="menuitem" tabindex="-1" href="#")
+						a( role="menuitem" tabindex="-1" href="#" )
 							span.glyphicon.glyphicon-usd  Payment
 					li( role="presentation" )
 						a( role="menuitem" tabindex="-1" href="#" )
