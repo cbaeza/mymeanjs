@@ -27,18 +27,20 @@ _schema = new mongoose.Schema(
 
 )
 
+_fields = '_id name lastname email creationDate'
+
 _schema.methods =
 
 	authenticate: ( user, cb ) ->
-		this.model( _modelName ).findOne { email : user.email }, ( error, user ) ->
-			return cb( error ) if error?
-			return cb( new Error('user not found') ) if !user?
-			return cb( user )
+		this.model( _modelName ).findOne { email : user.email }, _fields, ( error, results ) ->
+			return cb( error ) if error
+			return cb( new Error('user not found') ) if !results?
+			return cb( null, results )
 
 	getAllUsers: ( cb ) ->
-		this.model( _modelName ).find ( error, data ) ->
+		this.model( _modelName ).find( ).select( _fields ).exec ( error, results ) ->
 			return cb( error ) if error
-			return cb( null, data )
+			return cb( null, results )
 
 
 module.exports = mongoose.model( _modelName, _schema)
