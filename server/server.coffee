@@ -1,6 +1,8 @@
 express 		= require('express')
 methodOverride 	= require('method-override')
 bodyParser		= require('body-parser')
+cookieparser    = require("cookie-parser")
+expressSession  = require('express-session')
 
 env = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 # init config passing current environment
@@ -22,6 +24,19 @@ app.use bodyParser.json()
 # all static resources
 app.use express.static( "./public" )
 app.use express.static( "./bower_components" )
+
+# cookie based session
+app.use cookieparser()
+app.use expressSession(
+	{
+		secret: 'secret'
+		cookie:
+			path: '/'
+			secure: false
+			maxAge: 3600000 * 24 * 7 # one week
+		saveUninitialized: true
+		resave: true
+	} )
 
 # configure mongodb via mongoose
 require('./config/mongo')( config )

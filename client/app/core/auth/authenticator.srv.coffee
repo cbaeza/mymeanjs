@@ -10,9 +10,9 @@ angular
 
 			baseUsersUrl = ra.all('users')
 
-			@authenticate = ( user ) ->
+			@login = ( user ) ->
 				# console.log(user)
-				service = baseUsersUrl.all('authenticate')
+				service = baseUsersUrl.all('login')
 				user.password = md5.createHash( user.password )
 				return service.post(user)
 

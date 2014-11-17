@@ -19,7 +19,7 @@ angular
 
 			$scope.authenticate = ( event ) ->
 				#console.log("authenticate MainClientController: "+ JSON.stringify($scope.user) )
-				AuthenticatorSrvc.authenticate($scope.user).then (
+				AuthenticatorSrvc.login($scope.user).then (
 					( data ) ->
 						console.log data
 						$scope.user.registeredUser = true

@@ -2,6 +2,7 @@
 
 mongoose    = require('mongoose')
 _modelName  = 'users'
+_           = require('lodash')
 
 _schema = new mongoose.Schema(
 
@@ -32,10 +33,15 @@ _fields = '_id name lastname email creationDate'
 _schema.methods =
 
 	authenticate: ( user, cb ) ->
-		this.model( _modelName ).findOne { email : user.email }, _fields, ( error, results ) ->
+		this.model( _modelName ).findOne { email : user.email }, ( error, result ) ->
 			return cb( error ) if error
-			return cb( new Error('user not found') ) if !results?
-			return cb( null, results )
+			return cb( 'user not found' ) if !result?
+			#console.log(result.password)
+			#console.log(user.password)
+			if result.password is user.password
+				return cb( null, _.pick( result, _fields.split(' ')) )
+			else
+				return cb( 'password invalid' )
 
 	getAllUsers: ( cb ) ->
 		this.model( _modelName ).find( ).select( _fields ).exec ( error, results ) ->
