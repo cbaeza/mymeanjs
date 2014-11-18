@@ -11,6 +11,7 @@ angular
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
 		'module.dummy'
 		'module.main'
+		'module.profiles'
 
 		]).config([
 			'$routeProvider'
@@ -22,6 +23,10 @@ angular
 					.when '/',
 						templateUrl: '/partials/app/templates/dummy.html'
 						controller: 'DummyCtrl'
+
+					.when '/profiles',
+						templateUrl: '/partials/app/templates/profile.html'
+						controller: 'ProfilesCtrl'
 
 					.otherwise
 						redirectTo: '/'
