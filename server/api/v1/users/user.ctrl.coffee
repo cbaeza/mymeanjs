@@ -21,6 +21,9 @@ module.exports =
 			console.log(req.session)
 			res.status(200).send( user )
 
+	logout: ( req, res ) ->
+		req.session.user = null;
+		res.status(200).json( 'message': 'OK')
 
 	select: ( req, res ) ->
 		console.log("select !")

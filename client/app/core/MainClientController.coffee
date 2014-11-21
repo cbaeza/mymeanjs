@@ -6,8 +6,9 @@ angular
 	.module('mymeanjs')
 	.controller('MainClientController', [
 		'$scope'
+		'$location'
 		'AuthenticatorSrvc'
-		( $scope, AuthenticatorSrvc ) ->
+		( $scope, location, AuthenticatorSrvc ) ->
 			console.log('MainClientController init')
 
 			$scope.user = {
@@ -23,6 +24,18 @@ angular
 					( data ) ->
 						console.log data
 						$scope.user.registeredUser = true
+						window.bootstrappedUserObject = data
 				)
+
+			$scope.logout = ( event ) ->
+				AuthenticatorSrvc.logout($scope.user).then (
+					( data ) ->
+						#console.log('logout done')
+						console.log data
+						$scope.user.registeredUser = false
+						window.bootstrappedUserObject = null
+						location.path('/')
+				)
+
 
 	])

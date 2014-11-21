@@ -1,6 +1,8 @@
 # Api version 1
 
-UserCtrl = require('./users/user.ctrl')
+UserCtrl    = require('./users/user.ctrl')
+EmailCtrl   = require('./email/email.ctrl')
+
 version = 'v1'
 api = "/api/#{version}"
 
@@ -17,4 +19,8 @@ module.exports = ( app, passport ) ->
 
 		.get(  api + '/users'	            , UserCtrl.select )
 		.post( api + '/users/login'         , UserCtrl.login )
+		.post( api + '/users/logout'        , UserCtrl.logout )
 		#.get( api + "/users"	, passport.authenticate('local', { failureRedirect: '/login'}), UserCtrl.select)
+
+		# email
+		.post( api + '/email',  EmailCtrl.sendEmail )
