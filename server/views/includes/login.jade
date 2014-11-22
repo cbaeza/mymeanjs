@@ -22,23 +22,30 @@
 	div( ng-show="user.registeredUser == true" )
 		.navbar-form.navbar-right
 
-			.dropdown
-				button.btn.btn-primary.dropdown-toggle( type="button" )
-					span.glyphicon.glyphicon-cog  {{user.email}}
+			//- Single button
+			div.btn-group( dropdown is-open="status.isopen" )
 
-				ul.dropdown-menu
+				button.btn.btn-primary {{user.email}}
+				button.btn.btn-primary.dropdown-toggle( type="button" dropdown-toggle ng-disabled="disabled" ng-click="toggleDropdown($event)" )
+					span.caret
+					span.sr-only
 
-					li.dropdown-header( role="presentation" )
-						span You account
-
-					li( role="presentation" )
-						a( role="menuitem" tabindex="-1" href="/profiles" )
-							span.glyphicon.glyphicon-user  Profile
+				ul.dropdown-menu( role="presentation" )
 
 					li( role="presentation" )
-						a( role="menuitem" tabindex="-1" href="#" )
-							span.glyphicon.glyphicon-shopping-cart  Shoping cart
+						a( role="menuitem" href="/profile" )
+							span.glyphicon.glyphicon-user Profile
 
 					li( role="presentation" )
-						a( role="menuitem" tabindex="-1" ng-click="logout( $event )" )
-							span.glyphicon.glyphicon-log-out  Log out
+						a( role="menuitem"  href="#" )
+							span.glyphicon.glyphicon-shopping-cart Shopping
+
+					li( role="presentation" )
+						a( role="menuitem" href="#" ) Favorities
+
+					li
+						.divider
+
+					li( role="presentation" )
+						a( role="menuitem" href="/logout" ng-click="logout( $event )" )
+							span.glyphicon.glyphicon-log-out logout

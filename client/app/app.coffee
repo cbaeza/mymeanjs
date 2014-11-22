@@ -25,7 +25,7 @@ angular
 						templateUrl: '/partials/app/templates/dummy.html'
 						controller: 'DummyCtrl'
 
-					.when '/profiles',
+					.when '/profile',
 						templateUrl: '/partials/app/templates/profile.html'
 						controller: 'ProfilesCtrl'
 
@@ -35,7 +35,8 @@ angular
 				$lp.html5Mode({
 					enabled: true,
 					requireBase: true
-				});
+				})
+
 				$lp.hashPrefix( '!' )
 
 				# restangular base api url

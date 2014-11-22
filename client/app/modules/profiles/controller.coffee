@@ -7,6 +7,7 @@ angular.module('module.profiles.controller', ['module.profiles.service']).contro
 		#console.log 'ProfilesCtrl init'
 
 		# check authenticate user
+		#console.log(window.bootstrappedUserObject)
 		if not window.bootstrappedUserObject?
 			location.path('/')
 

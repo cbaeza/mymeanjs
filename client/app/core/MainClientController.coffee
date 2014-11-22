@@ -13,6 +13,7 @@ angular
 		( $scope, location, $modal, ngDialog, AuthenticatorSrvc ) ->
 			console.log('MainClientController init')
 
+			# user
 			$scope.user = {
 				email: null
 				password: null
@@ -20,8 +21,14 @@ angular
 				registeredUser: false
 			}
 
+			# system messages in header
 			$scope.system = {
 				message : ''
+			}
+
+			# toogle flag to open/close menu
+			$scope.status = {
+				isopen: false
 			}
 
 			$scope.authenticate = ( event ) ->
@@ -61,5 +68,10 @@ angular
 				}).result.then (data) ->
 					console.log data
 
+			# menu for logged in user
+			$scope.toggleDropdown = ($event) ->
+				$event.preventDefault()
+				$event.stopPropagation()
+				$scope.status.isopen = !$scope.status.isopen
 
 	])
