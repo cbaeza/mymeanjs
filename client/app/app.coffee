@@ -6,6 +6,7 @@ angular
 		'ui.bootstrap'
 		'restangular'
 		'angular-md5'
+		'ngDialog'
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController

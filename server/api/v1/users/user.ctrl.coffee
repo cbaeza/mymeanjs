@@ -8,7 +8,7 @@ module.exports =
 	login: ( req, res ) ->
 		#console.log( req.body )
 		UserModel.authenticate req.body, ( error, user ) ->
-			return res.status(400).json({ 'error message' : error }) if error
+			return res.status(400).json({ 'error' : error }) if error
 			#console.log(user)
 			# set user in session
 			req.session.user = {
@@ -28,5 +28,5 @@ module.exports =
 	select: ( req, res ) ->
 		console.log("select !")
 		UserModel.getAllUsers ( error, data ) ->
-			return res.status(400).json({ 'message' : error }) if error
+			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( data )

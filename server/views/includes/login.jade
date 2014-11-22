@@ -2,34 +2,43 @@
 .navbar-collapse.collapse( id="navbar" )
 
 	div( ng-show="user.registeredUser == false" )
+
 		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
-			.form-group
-				input.form-control( name="email" type="text" placeholder="Email" ng-model="user.email" required )
+			div.form-group.spacer
+				input.form-control( type="email" name="email"  placeholder="Email" ng-model="user.email" required )
 
-			.form-group
-				input.form-control( type="password" placeholder="Password" ng-model="user.password" required )
+			div.form-group.spacer
+				input.form-control( type="password" name="password" placeholder="Password" ng-model="user.password" required)
 
-			button.btn.btn-success.glyphicon.glyphicon-log-in(
-				type="submit"
-				ng-disabled="loginForm.$invalid"
-				ng-click="authenticate($event)" )
+			div.form-group.spacer
+				button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
+					span Login
 
+			div.form-group
+				button.btn.btn-primary( type="button" ng-click="register($event)" )
+					span Register
 
 	div( ng-show="user.registeredUser == true" )
 		.navbar-form.navbar-right
+
 			.dropdown
-				button.btn.btn-primary.dropdown-toggle( type="button" )  {{user.email}}
-					span.glyphicon.glyphicon-cog
+				button.btn.btn-primary.dropdown-toggle( type="button" )
+					span.glyphicon.glyphicon-cog  {{user.email}}
+
 				ul.dropdown-menu
+
 					li.dropdown-header( role="presentation" )
 						span You account
+
 					li( role="presentation" )
 						a( role="menuitem" tabindex="-1" href="/profiles" )
 							span.glyphicon.glyphicon-user  Profile
+
 					li( role="presentation" )
 						a( role="menuitem" tabindex="-1" href="#" )
-							span.glyphicon.glyphicon-usd  Payment
+							span.glyphicon.glyphicon-shopping-cart  Shoping cart
+
 					li( role="presentation" )
 						a( role="menuitem" tabindex="-1" ng-click="logout( $event )" )
 							span.glyphicon.glyphicon-log-out  Log out
