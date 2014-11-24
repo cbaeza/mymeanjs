@@ -49,3 +49,25 @@
 					li( role="presentation" )
 						a( role="menuitem" href="/logout" ng-click="logout( $event )" )
 							span.glyphicon.glyphicon-log-out logout
+
+	ul.nav.navbar-nav.pull-right
+		li
+			a.icon-btn( href="/about" )
+				i.fa.fa-users
+				span about
+
+		li
+			a.icon-btn( href="/contact" )
+				i.fa.fa-envelope
+				span contact
+
+		li.dropdown(is-open="langDropDown")
+			a.icon-btn(dropdown-toggle)
+				i.fa.fa-caret-down
+				span lang
+
+			ul.dropdown-menu
+				li( ng-repeat="lang in providers.languages" )
+					a.icon-btn(ng-click="useLang($event, lang)")
+						span.flag-icon( ng-class="getLangCss(lang)" )
+						span lang

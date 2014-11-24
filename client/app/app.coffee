@@ -13,8 +13,27 @@ angular
 		'module.dummy'
 		'module.main'
 		'module.profiles'
+		]).run(
+			( $rootScope ) ->
+				console.log "app run"
 
-		]).config([
+				#######################################################
+				#
+				# Check session saved in session storage
+				#
+				#######################################################
+				console.log "sessionStorage.currentSession"
+				console.log sessionStorage.currentSession
+				if sessionStorage.currentSession?
+					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
+					# let everything know that we need to save state now.
+					window.onload = ( event ) ->
+						console.log "on load"
+						$rootScope.$broadcast('restoreSession', angular.fromJson(sessionStorage.currentSession) )
+
+
+
+		).config([
 			'$routeProvider'
 			'$locationProvider'
 			'RestangularProvider'

@@ -1,6 +1,6 @@
 # MainController for client
 # Responsible of:
-#		handler authentication for users
+#		handler sessions, languages, register
 #
 angular
 	.module('mymeanjs')
@@ -10,20 +10,31 @@ angular
 		'$modal'
 		'ngDialog'
 		'AuthenticatorSrvc'
-		( $scope, location, $modal, ngDialog, AuthenticatorSrvc ) ->
+		'$rootScope'
+		( $scope, location, $modal, ngDialog, AuthenticatorSrvc, $rootScope ) ->
 			console.log('MainClientController init')
-
-			# user
-			$scope.user = {
-				email: null
-				password: null
-				loggedOn: Date.now()
-				registeredUser: false
-			}
 
 			# system messages in header
 			$scope.system = {
 				message : ''
+			}
+
+			#######################################################
+			#
+			# Session
+			#
+			#######################################################
+
+			# user
+			$scope.user = {
+				_id: null
+				name: null
+				lastname: null
+				email: null
+				password: null
+				lastLogin: null
+				creationDate: null
+				registeredUser: false
 			}
 
 			# toogle flag to open/close menu
@@ -31,21 +42,43 @@ angular
 				isopen: false
 			}
 
+			# triggered on load document and if exist a user session on session storage
+			$rootScope.$on("restoreSession", ( event, currentSessionData ) ->
+				#console.log "restoreSession listener"
+				#console.log currentSessionData
+				restoreSession( currentSessionData )
+			)
+
+			# wrap user data to be storage in sessionStorage and windows
+			restoreSession = ( sessionData ) ->
+				#console.log "on restoreSession"
+				#console.log sessionData
+				$scope.user._id             = sessionData._id
+				$scope.user.name            = sessionData.name
+				$scope.user.lastname        = sessionData.lastname
+				$scope.user.email           = sessionData.email
+				$scope.user.creationDate    = sessionData.creationDate
+				$scope.user.registeredUser  = true
+				delete $scope.user.password
+
+				window.bootstrappedUserObject = $scope.user
+				$scope.system.message = "| #{$scope.user.name} #{$scope.user.lastname}"
+
+
 			$scope.authenticate = ( event ) ->
-				#console.log("authenticate MainClientController: "+ JSON.stringify($scope.user) )
 				AuthenticatorSrvc.login($scope.user).then(
 
 					( data ) ->
-						console.log data
-						$scope.user.registeredUser = true
-						window.bootstrappedUserObject = data
-						$scope.system.message = "| #{data.name} #{data.lastname}"
+						restoreSession( data )
+						# save session after successfull login
+						$scope.user.lastLogin = new Date()
+						sessionStorage.currentSession = angular.toJson($scope.user)
 
 					( error ) ->
 						console.log error
 						if( error? )
 							# ngDialog.open({  template: "<p>Error #{error}</p>", plain: true })
-							console.log 'en error'
+							console.log 'error'
 							$scope.system.message = error.data.error
 				)
 
@@ -56,6 +89,7 @@ angular
 						console.log data
 						$scope.user.registeredUser = false
 						window.bootstrappedUserObject = null
+						delete sessionStorage.currentSession
 						location.path('/')
 				)
 
@@ -73,5 +107,26 @@ angular
 				$event.preventDefault()
 				$event.stopPropagation()
 				$scope.status.isopen = !$scope.status.isopen
+
+			#######################################################
+			#
+			# Languages
+			#
+			#######################################################
+
+			# languages
+			$scope.providers = {
+				languages: ["es", "gb", "ga"]
+			}
+
+			# lang
+			$scope.langDropDown = false
+
+			$scope.useLang = ( $event, lang ) ->
+				#console.log( lang )
+
+			$scope.getLangCss = ( lang ) ->
+				#console.log( lang )
+				return "flag-icon-#{lang}"
 
 	])
