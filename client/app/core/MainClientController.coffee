@@ -59,8 +59,9 @@ angular
 				$scope.user.email           = sessionData.email
 				$scope.user.creationDate    = sessionData.creationDate
 				$scope.user.registeredUser  = true
+				$scope.user.lastLogin       = new Date()
 				delete $scope.user.password
-
+				# refresh user
 				window.bootstrappedUserObject = $scope.user
 				$scope.system.message = "| #{$scope.user.name} #{$scope.user.lastname}"
 
@@ -70,8 +71,7 @@ angular
 
 					( data ) ->
 						restoreSession( data )
-						# save session after successfull login
-						$scope.user.lastLogin = new Date()
+						# save session after successfully login
 						sessionStorage.currentSession = angular.toJson($scope.user)
 
 					( error ) ->

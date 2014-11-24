@@ -26,9 +26,9 @@ angular
 				console.log sessionStorage.currentSession
 				if sessionStorage.currentSession?
 					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
-					# let everything know that we need to save state now.
-					window.onload = ( event ) ->
-						console.log "on load"
+					# let everything know that we need to restore session now.
+					window.onload = ( ) ->
+						#console.log "on load"
 						$rootScope.$broadcast('restoreSession', angular.fromJson(sessionStorage.currentSession) )
 
 
