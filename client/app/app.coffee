@@ -13,27 +13,8 @@ angular
 		'module.dummy'
 		'module.main'
 		'module.profiles'
-		]).run(
-			( $rootScope ) ->
-				console.log "app run"
 
-				#######################################################
-				#
-				# Check session saved in session storage
-				#
-				#######################################################
-				console.log "sessionStorage.currentSession"
-				console.log sessionStorage.currentSession
-				if sessionStorage.currentSession?
-					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
-					# let everything know that we need to restore session now.
-					window.onload = ( ) ->
-						#console.log "on load"
-						$rootScope.$broadcast('restoreSession', angular.fromJson(sessionStorage.currentSession) )
-
-
-
-		).config([
+		]).config([
 			'$routeProvider'
 			'$locationProvider'
 			'RestangularProvider'
@@ -61,5 +42,21 @@ angular
 				# restangular base api url
 				restAngularProvider.setBaseUrl('http://localhost:3030/api/v1')
 
-				return
-])
+		]).run(
+			( $rootScope ) ->
+				console.log "app run"
+
+				#######################################################
+				#
+				# Check session saved in session storage
+				#
+				#######################################################
+				console.log "sessionStorage.currentSession"
+				console.log sessionStorage.currentSession
+				if sessionStorage.currentSession?
+					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
+					# let everything know that we need to restore session now.
+					window.onload = ( ) ->
+						#console.log "on load"
+						$rootScope.$broadcast('restoreSession', angular.fromJson(sessionStorage.currentSession) )
+	)

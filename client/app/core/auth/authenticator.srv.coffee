@@ -4,12 +4,11 @@ angular
 		'$q'
 		'md5'
 		'Restangular'
-		( $q, md5, ra ) ->
+		( $q, md5, Restangular ) ->
 
 			console.log('AuthenticatorSrvc init')
 
-
-			baseUsersUrl = ra.all('users')
+			baseUsersUrl = Restangular.all('users')
 
 			@login = ( user ) ->
 				# console.log(user)
@@ -21,7 +20,8 @@ angular
 				service = baseUsersUrl.all('logout')
 				return service.post(user)
 
-			@getAllUsers = -> return baseUsersUrl.getList()
+			@getAllUsers = () ->
+				return baseUsersUrl.getList()
 
 			return
 	])
