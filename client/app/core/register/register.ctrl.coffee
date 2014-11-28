@@ -14,8 +14,17 @@ angular
 			( $scope, location, modal, AuthenticatorSrvc, $modalInstance ) ->
 				console.log('RegisterModalCtrl init')
 
+				$scope.newUser = {
+					name: null
+					lastname: null
+					email: null
+					password1: null
+					password2: null
+				}
+
 				$scope.doRegister = ( event ) ->
 					console.log('do Register')
+					console.log $scope.newUser
 
 				$scope.close = ( event ) ->
 					console.log('do Register')

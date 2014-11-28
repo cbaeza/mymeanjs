@@ -6,3 +6,9 @@ body {
 .spacer{
 	padding-right: 3px;
 }
+
+.msg-error{
+	color: #FF0000;
+	font-size: 14px;
+	float: right;
+}
