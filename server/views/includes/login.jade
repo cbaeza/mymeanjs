@@ -33,22 +33,39 @@
 				ul.dropdown-menu( role="presentation" )
 
 					li( role="presentation" )
-						a( role="menuitem" href="/profile" )
-							span.glyphicon.glyphicon-user Profile
+						a( role="menuitem" href="/messages" )
+							span Messages
+							//span.badge 42
+
+					li
+						.divider
 
 					li( role="presentation" )
-						a( role="menuitem"  href="#" )
-							span.glyphicon.glyphicon-shopping-cart Shopping
+						a( role="menuitem" href="/panel" )
+							span Control panel
 
 					li( role="presentation" )
-						a( role="menuitem" href="#" ) Favorities
+						a( role="menuitem"  href="/offers" )
+							span My offers
+
+					li( role="presentation" )
+						a( role="menuitem"  href="/profile" )
+							span Profile
+
+					li( role="presentation" )
+						a( role="menuitem"  href="/account" )
+							span Account information
+
+					li( role="presentation" )
+						a( role="menuitem"  href="/favourites" )
+							span Favourites
 
 					li
 						.divider
 
 					li( role="presentation" )
 						a( role="menuitem" href="/logout" ng-click="logout( $event )" )
-							span.glyphicon.glyphicon-log-out logout
+							span logout
 
 	ul.nav.navbar-nav.pull-right
 		li
