@@ -21,10 +21,12 @@ angular
 					password1: null
 					password2: null
 				}
+				$scope.isRegister = false
 
 				$scope.doRegister = ( event ) ->
 					console.log('do Register')
 					console.log $scope.newUser
+					$scope.isRegister = true
 
 				$scope.close = ( event ) ->
 					console.log('do Register')
