@@ -13,6 +13,7 @@ angular
 		'module.dummy'
 		'module.main'
 		'module.profiles'
+		'module.messages'
 
 		]).config([
 			'$routeProvider'
@@ -28,6 +29,10 @@ angular
 					.when '/profile',
 						templateUrl: '/partials/app/templates/profile.html'
 						controller: 'ProfilesCtrl'
+
+					.when '/messages',
+						templateUrl: '/partials/app/modules/messages/messages.html'
+						controller: 'MessagesCtrl'
 
 					.otherwise
 						redirectTo: '/'
