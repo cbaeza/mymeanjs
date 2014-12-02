@@ -1,5 +1,6 @@
 angular
-	.module('module.dummy.service', []).service( 'DummySrvc', [
+	.module('module.controlpanel.service', [])
+	.service( 'ControlPanelSrvc', [
 		'Restangular'
 		( Restangular ) ->
 

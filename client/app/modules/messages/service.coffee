@@ -1,9 +1,8 @@
 angular
 	.module('module.messages.service', [])
 	.service( 'MessagesSrvc', [
-		'$q'
-		'$http'
-		( $q, $http ) ->
+		'Restangular'
+		( Restangular ) ->
 
 			@sayHello = () ->
 				console.log "service say hello!"

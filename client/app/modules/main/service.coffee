@@ -1,10 +1,10 @@
-angular.module('module.main.service', []).service( 'MainSrvc', [
-	'$q'
-	'$http'
-	( $q, $http ) ->
+angular
+	.module('module.main.service', []).service( 'MainSrvc', [
+		'Restangular'
+		( Restangular ) ->
 
-		@sayHello = () ->
-			console.log "service say hello!"
+			@sayHello = () ->
+				console.log "service say hello!"
 
-		return
-])
+			return
+	])

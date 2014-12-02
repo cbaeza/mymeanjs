@@ -14,6 +14,7 @@ angular
 		'module.main'
 		'module.profiles'
 		'module.messages'
+		'module.controlpanel'
 
 		]).config([
 			'$routeProvider'
@@ -33,6 +34,10 @@ angular
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
 						controller: 'MessagesCtrl'
+
+					.when '/controlpanel',
+						templateUrl: '/partials/app/modules/controlpanel/controlpanel.html'
+						controller: 'ControlpanelCtrl'
 
 					.otherwise
 						redirectTo: '/'
