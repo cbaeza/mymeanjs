@@ -100,10 +100,43 @@ module.exports = (grunt) ->
 				options:
 					livereload: true
 
+		nodemon:
+			test:
+				script: 'test.js'
+				options:
+					nodeArgs: ['--debug']
+					ext: 'js'
+					watch: ['test.js']
+			dev:
+				script: 'server/server.coffee'
+				options:
+					ext: 'coffee,jade,json'
+					watch: ['server/**/*']
+			debug:
+				script: 'server/server.coffee'
+				options:
+					nodeArgs: ['--nodejs', '--debug']
+					ext: 'coffee,jade,json'
+					watch: ['server/**/*']
+
+		'node-inspector':
+			debug: {}
+
+		concurrent:
+			dev:
+				tasks: ['nodemon:dev']
+				options:
+					logConcurrentOutput: true
+			debug:
+				tasks: ['nodemon:debug', 'node-inspector:debug']
+				options:
+					logConcurrentOutput: true
+
 	grunt
-		.registerTask('default', ['uglify'])
-		.registerTask( 'client-watch', [ 'watch:clientApp' ])
-		.registerTask( 'build-client', [
+		.registerTask( 'default',       [ 'uglify'] )
+		.registerTask( 'client-watch',  [ 'watch:clientApp' ] )
+		.registerTask( 'debug', 		[ 'concurrent:debug' ] )
+		.registerTask( 'build-client',  [
 			#'compass:dist'
 			'jade:inline'
 			'jade:templates'
@@ -113,4 +146,4 @@ module.exports = (grunt) ->
 			'includes:files'
 			'includes:inline'
 			'copy:scripts'
-		])
+		] )
