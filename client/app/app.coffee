@@ -16,6 +16,7 @@ angular
 		'module.messages'
 		'module.controlpanel'
 		'module.myoffers'
+		'module.account'
 
 		]).config([
 			'$routeProvider'
@@ -31,6 +32,10 @@ angular
 					.when '/profile',
 						templateUrl: '/partials/app/templates/profile.html'
 						controller: 'ProfilesCtrl'
+
+					.when '/account',
+						templateUrl: '/partials/app/modules/account/account.html'
+						controller: 'AccountCtrl'
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
