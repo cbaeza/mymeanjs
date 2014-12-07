@@ -1,0 +1,2 @@
+Favourites module
+=================
