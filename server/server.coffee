@@ -54,3 +54,4 @@ require('./routes/routes')( app )
 app.listen 3030, ( ) ->
 	console.log "Server started, listen on port #{app.get('port')}"
 	console.log config
+	console.log process.env.PWD
