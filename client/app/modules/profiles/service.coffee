@@ -1,9 +1,11 @@
-angular.module('module.profiles.service', []).service( 'ProfilesSrvc', [
-	'Restangular'
-	( ra ) ->
+angular
+	.module('module.profiles.service', [])
+	.service( 'ProfilesSrvc', [
+		'Restangular'
+		( ra ) ->
 
-		@sayHello = () ->
-			console.log "ProfilesSrvc say hello!"
+			@sayHello = () ->
+				console.log "ProfilesSrvc say hello!"
 
-		return
-])
+			return
+	])
