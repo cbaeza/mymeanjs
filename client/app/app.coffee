@@ -17,6 +17,7 @@ angular
 		'module.controlpanel'
 		'module.myoffers'
 		'module.account'
+		'module.favourites'
 
 		]).config([
 			'$routeProvider'
@@ -29,14 +30,6 @@ angular
 						templateUrl: '/partials/app/templates/dummy.html'
 						controller: 'DummyCtrl'
 
-					.when '/profile',
-						templateUrl: '/partials/app/templates/profile.html'
-						controller: 'ProfilesCtrl'
-
-					.when '/account',
-						templateUrl: '/partials/app/modules/account/account.html'
-						controller: 'AccountCtrl'
-
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
 						controller: 'MessagesCtrl'
@@ -48,6 +41,18 @@ angular
 					.when '/myoffers',
 						templateUrl: '/partials/app/modules/myoffers/myoffers.html'
 						controller: 'MyOffersCtrl'
+
+					.when '/profile',
+						templateUrl: '/partials/app/templates/profile.html'
+						controller: 'ProfilesCtrl'
+
+					.when '/account',
+						templateUrl: '/partials/app/modules/account/account.html'
+						controller: 'AccountCtrl'
+
+					.when '/favourites',
+						templateUrl: '/partials/app/modules/favourites/favourites.html'
+						controller: 'FavouritesCtrl'
 
 					.otherwise
 						redirectTo: '/'
