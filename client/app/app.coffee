@@ -65,7 +65,7 @@ angular
 				$lp.hashPrefix( '!' )
 
 				# restangular base api url
-				restAngularProvider.setBaseUrl('http://localhost:3030/api/v1')
+				restAngularProvider.setBaseUrl('http://localhost:3030/')
 
 		]).run(
 			( $rootScope ) ->

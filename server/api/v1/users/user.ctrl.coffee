@@ -18,7 +18,9 @@ module.exports =
 				email: user.email
 				creationDate: user.creationDate
 			}
+			console.log("-----------NEW SESSION ------------------")
 			console.log(req.session)
+			console.log("-----------------------------------------")
 			res.status(200).send( user )
 
 	logout: ( req, res ) ->
@@ -26,7 +28,7 @@ module.exports =
 		res.status(200).json( 'message': 'OK')
 
 	select: ( req, res ) ->
-		console.log("select !")
+		#console.log("select !")
 		UserModel.getAllUsers ( error, data ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( data )

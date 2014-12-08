@@ -13,21 +13,26 @@ versioninfo = {
 
 module.exports = ( app, passport ) ->
 
-	app.all( '/api/*',
-		(req, res, next) ->
-			console.log( "require Auth: " + req.session.user)
-			if not req.session.user
-				console.log "user null"
-				res.status(400).json( { error : 'require auth' } ).send()
-			else
-				# validate user/token?
-				next()
-	)
+	app
+		.all( '/api/*',
+			(req, res, next) ->
+				console.log( "checking auth: " + req.session.user)
+				if not req.session.user
+					console.log "user null"
+					res.status(400).json( { error : 'require auth' } ).send()
+				else
+					console.log("session active")
+					# validate user/token?
+					next()
+		)
 		.post( '/users/login'         , UserCtrl.login )
+		.post( '/users/logout'        , UserCtrl.logout )
+
+		# API
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/users'	            , UserCtrl.select )
-		.post( api + '/users/logout'        , UserCtrl.logout )
+
 		#.get( api + "/users"	, passport.authenticate('local', { failureRedirect: '/login'}), UserCtrl.select)
 
 		# email
