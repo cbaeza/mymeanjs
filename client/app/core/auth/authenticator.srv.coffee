@@ -8,13 +8,14 @@ angular
 
 			console.log('AuthenticatorSrvc init')
 
-			baseUsersUrl = Restangular.all('users')
+			baseUsersUrl = Restangular.all('auth')
 
 			@login = ( user ) ->
 				# console.log(user)
 				service = baseUsersUrl.all('login')
-				user.password = md5.createHash( user.password )
-				return service.post(user)
+				if user.password?
+					user.password = md5.createHash( user.password )
+					return service.post(user)
 
 			@logout = ( user ) ->
 				service = baseUsersUrl.all('logout')

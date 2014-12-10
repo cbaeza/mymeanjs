@@ -18,15 +18,14 @@ module.exports = ( app, passport ) ->
 			(req, res, next) ->
 				console.log( "checking auth: " + req.session.user)
 				if not req.session.user
-					console.log "user null"
+					console.log "no session"
 					res.status(400).json( { error : 'require auth' } ).send()
 				else
 					console.log("session active")
-					# validate user/token?
 					next()
 		)
-		.post( '/users/login'         , UserCtrl.login )
-		.post( '/users/logout'        , UserCtrl.logout )
+		.post( '/auth/login'         , UserCtrl.login )
+		.post( '/auth/logout'        , UserCtrl.logout )
 
 		# API
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))

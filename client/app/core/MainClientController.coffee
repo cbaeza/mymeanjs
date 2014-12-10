@@ -12,6 +12,7 @@ angular
 		'AuthenticatorSrvc'
 		'$rootScope'
 		( $scope, location, $modal, ngDialog, AuthenticatorSrvc, $rootScope ) ->
+
 			console.log('MainClientController init')
 
 			# system messages in header
@@ -43,16 +44,16 @@ angular
 			}
 
 			# triggered on load document and if exist a user session on session storage
-			$rootScope.$on("restoreSession", ( event, currentSessionData ) ->
-				#console.log "restoreSession listener"
+			$rootScope.$on("initSessionEvent", ( event, currentSessionData ) ->
+				#console.log "initSessionEvent listener"
 				#console.log currentSessionData
-				restoreSession( currentSessionData )
+				initSession( currentSessionData )
 			)
 
 			# wrap user data to be storage in sessionStorage and windows
-			restoreSession = ( sessionData ) ->
+			initSession = ( sessionData ) ->
 				#console.log "on restoreSession"
-				#console.log sessionData
+				console.log sessionData
 				$scope.user._id             = sessionData._id
 				$scope.user.name            = sessionData.name
 				$scope.user.lastname        = sessionData.lastname
@@ -66,11 +67,12 @@ angular
 				$scope.system.message = "| #{$scope.user.name} #{$scope.user.lastname}"
 
 
-			$scope.authenticate = ( event ) ->
+			$scope.authenticate = ( $event ) ->
 				AuthenticatorSrvc.login($scope.user).then(
 
 					( data ) ->
-						restoreSession( data )
+						#console.log(data)
+						initSession( data )
 						# save session after successfully login
 						sessionStorage.currentSession = angular.toJson($scope.user)
 
@@ -82,7 +84,7 @@ angular
 							$scope.system.message = error.data.error
 				)
 
-			$scope.logout = ( event ) ->
+			$scope.logout = ( $event ) ->
 				AuthenticatorSrvc.logout($scope.user).then (
 					( data ) ->
 						#console.log('logout done')
@@ -93,7 +95,7 @@ angular
 						location.path('/')
 				)
 
-			$scope.register = ( event ) ->
+			$scope.register = ( $event ) ->
 				console.log( 'register')
 				$modal.open({
 					controller: 'RegisterModalCtrl'

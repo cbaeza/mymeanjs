@@ -83,5 +83,5 @@ angular
 					# let everything know that we need to restore session now.
 					window.onload = ( ) ->
 						#console.log "on load"
-						$rootScope.$broadcast('restoreSession', angular.fromJson(sessionStorage.currentSession) )
+						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession) )
 	)
