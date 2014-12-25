@@ -41,11 +41,8 @@ app.use expressSession(
 # configure mongodb via mongoose
 require('./config/mongo')( config )
 
-#passport, authentication framework
-passport = require('./config/passport')( config, app )
-
 # api, define api always first as default routes
-require('./api/v1/api.v1')( app, passport )
+require('./api/v1/api.v1')( app )
 
 # default routes
 require('./routes/routes')( app )

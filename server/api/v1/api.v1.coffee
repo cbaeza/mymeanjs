@@ -11,7 +11,7 @@ versioninfo = {
 	'build date': Date.now()
 }
 
-module.exports = ( app, passport ) ->
+module.exports = ( app ) ->
 
 	app
 		.all( '/api/*',
@@ -31,8 +31,6 @@ module.exports = ( app, passport ) ->
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/users'	            , UserCtrl.select )
-
-		#.get( api + "/users"	, passport.authenticate('local', { failureRedirect: '/login'}), UserCtrl.select)
 
 		# email
 		.post( api + '/email',  EmailCtrl.sendEmail )
