@@ -34,6 +34,7 @@ app.use expressSession(
 			path: '/'
 			secure: false
 			maxAge: 3600000 * 24 * 7 # one week
+			httpOnly: false,
 		saveUninitialized: true
 		resave: true
 	} )
