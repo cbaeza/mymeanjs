@@ -35,6 +35,6 @@ module.exports =
 
 	create: ( req, res ) ->
 		user = new User(req.body)
-		UserModel.create user, ( error, data ) ->
+		user.save ( error ) ->
 			return res.status(400).json({ 'error' : error }) if error
-			return res.status(200).send( data )
+			return res.status(200).send( user.getPublicFields() )

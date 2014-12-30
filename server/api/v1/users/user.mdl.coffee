@@ -1,5 +1,4 @@
-# Model representing user in system
-
+# user model
 mongoose    = require('mongoose')
 _modelName  = 'users'
 _           = require('lodash')
@@ -47,11 +46,8 @@ _schema.methods =
 			return cb( error ) if error
 			return cb( null, results )
 
-	create: ( user , cb ) ->
-		console.log user
-		user.save ( error ) ->
-			return cb( error ) if error
-			return cb( null, user )
+	getPublicFields: ->
+		return _.pick( this, _fields.split(' '))
 
 
 module.exports = mongoose.model( _modelName, _schema)
