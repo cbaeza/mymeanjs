@@ -38,7 +38,7 @@
 					id="pw1"
 					name="pw1"
 					placeholder="Enter a password"
-					ng-model="newUser.password1"
+					ng-model="newUser.password"
 					required)
 
 			.form-group
@@ -50,7 +50,7 @@
 					ng-model="newUser.password2"
 					required)
 
-				div.msg-error( ng-show="newUser.password2 != newUser.password1")
+				div.msg-error( ng-show="newUser.password2 != newUser.password")
 					span Passwords don't match
 
 		.modal-footer

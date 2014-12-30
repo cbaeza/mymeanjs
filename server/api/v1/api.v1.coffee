@@ -24,13 +24,15 @@ module.exports = ( app ) ->
 					console.log("session active")
 					next()
 		)
-		.post( '/auth/login'         , UserCtrl.login )
-		.post( '/auth/logout'        , UserCtrl.logout )
+		# AUTH
+		.post( '/auth/login' , UserCtrl.login )
+		.post( '/auth/logout' , UserCtrl.logout )
+		.post( '/auth/accounts', UserCtrl.create )
 
-		# API
+		# API V1
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
-		.get( api + '/users'	            , UserCtrl.select )
+		.get( api + '/users'	, UserCtrl.select )
 
 		# email
 		.post( api + '/email',  EmailCtrl.sendEmail )

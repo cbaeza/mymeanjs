@@ -24,7 +24,7 @@ _schema = new mongoose.Schema(
 
 	creationDate:
 		type: Date
-		required: true
+		default: Date.now()
 )
 
 _fields = '_id name lastname email creationDate'
@@ -46,6 +46,12 @@ _schema.methods =
 		this.model( _modelName ).find( ).select( _fields ).exec ( error, results ) ->
 			return cb( error ) if error
 			return cb( null, results )
+
+	create: ( user , cb ) ->
+		console.log user
+		user.save ( error ) ->
+			return cb( error ) if error
+			return cb( null, user )
 
 
 module.exports = mongoose.model( _modelName, _schema)

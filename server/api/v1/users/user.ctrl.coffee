@@ -32,3 +32,9 @@ module.exports =
 		UserModel.getAllUsers ( error, data ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( data )
+
+	create: ( req, res ) ->
+		user = new User(req.body)
+		UserModel.create user, ( error, data ) ->
+			return res.status(400).json({ 'error' : error }) if error
+			return res.status(200).send( data )
