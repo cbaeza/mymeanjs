@@ -1,5 +1,8 @@
 # User controller
 
+uuid = require('node-uuid')
+md5 = require('MD5')
+
 User = require('./user.mdl')
 UserModel = new User()
 
@@ -35,6 +38,11 @@ module.exports =
 
 	create: ( req, res ) ->
 		user = new User(req.body)
+		user.token = uuid.v1()
+		user.verified = false
+		user.password = md5(user.password)
+		console.log user
+
 		user.save ( error ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( user.getPublicFields() )

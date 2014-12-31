@@ -21,6 +21,15 @@ _schema = new mongoose.Schema(
 		type: String
 		required: true
 
+	token:
+		type: String
+		require: true
+		unique: true
+
+	verified:
+		type: Boolean
+		require: true
+
 	creationDate:
 		type: Date
 		default: Date.now()
