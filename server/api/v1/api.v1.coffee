@@ -25,9 +25,10 @@ module.exports = ( app ) ->
 					next()
 		)
 		# AUTH
-		.post( '/auth/login' 	, UserCtrl.login )
-		.post( '/auth/logout' 	, UserCtrl.logout )
-		.post( '/auth/accounts'	, UserCtrl.create )
+		.post( '/auth/login' 			, UserCtrl.login )
+		.post( '/auth/logout' 			, UserCtrl.logout )
+		.post( '/auth/accounts'			, UserCtrl.create )
+		.post( '/auth/account/verify'	, UserCtrl.verify )
 
 		# API V1
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))

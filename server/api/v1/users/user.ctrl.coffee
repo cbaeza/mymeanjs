@@ -56,3 +56,17 @@ module.exports =
 			return res.status(200).send( 'message' : 'not found' ) if not user
 			return res.status(200).send( user.getPublicFields() )
 		)
+
+	verify: ( req, res ) ->
+		token = req.body.token
+
+		update =
+			verified : true
+			$unset:
+				token: ""
+
+		User.findOneAndUpdate( { 'token' : token }, update, ( error, user ) ->
+			return res.status(400).json({ 'error' : error }) if error
+			return res.status(200).send( 'message' : 'not found' ) if not user
+			return res.status(200).send( user.getPublicFields() )
+		)
