@@ -45,3 +45,7 @@ module.exports =
 				return res.status(500).json( 'reason' : err ) if err
 
 				return res.status(200).send(message)
+
+	sendAccountVerificationEmail: ( data ) ->
+		console.log "sendAccountVerificationEmail..."
+		console.log data

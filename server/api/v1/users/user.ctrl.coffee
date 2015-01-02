@@ -2,6 +2,7 @@
 
 uuid = require('node-uuid')
 md5 = require('MD5')
+email = require('../email/email.ctrl')
 
 User = require('./user.mdl')
 UserModel = new User()
@@ -45,4 +46,13 @@ module.exports =
 
 		user.save ( error ) ->
 			return res.status(400).json({ 'error' : error }) if error
+			email.sendAccountVerificationEmail(user)
 			return res.status(200).send( user.getPublicFields() )
+
+	search: ( req, res ) ->
+		q = req.query.id
+		User.findOne({ 'email' : q}, (error, user ) ->
+			return res.status(400).json({ 'error' : error }) if error
+			return res.status(200).send( 'message' : 'not found' ) if not user
+			return res.status(200).send( user.getPublicFields() )
+		)

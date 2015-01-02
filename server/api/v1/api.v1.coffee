@@ -25,14 +25,15 @@ module.exports = ( app ) ->
 					next()
 		)
 		# AUTH
-		.post( '/auth/login' , UserCtrl.login )
-		.post( '/auth/logout' , UserCtrl.logout )
-		.post( '/auth/accounts', UserCtrl.create )
+		.post( '/auth/login' 	, UserCtrl.login )
+		.post( '/auth/logout' 	, UserCtrl.logout )
+		.post( '/auth/accounts'	, UserCtrl.create )
 
 		# API V1
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/users'	, UserCtrl.select )
+		.get( api + '/user'		, UserCtrl.search )
 
 		# email
-		.post( api + '/email',  EmailCtrl.sendEmail )
+		.post( api + '/email'	,  EmailCtrl.sendEmail )
