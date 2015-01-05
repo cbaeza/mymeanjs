@@ -46,12 +46,15 @@ module.exports =
 
 		user.save ( error ) ->
 			return res.status(400).json({ 'error' : error }) if error
-			email.sendAccountVerificationEmail(user)
-			return res.status(200).send( user.getPublicFields() )
+			return email.sendAccountVerificationEmail(req, res, user)
+			#return res.status(200).send( user.getPublicFields() )
 
 	search: ( req, res ) ->
-		q = req.query.id
-		User.findOne({ 'email' : q}, (error, user ) ->
+		q = req.query.q
+
+		query = { $or : [ { email : q }, { name : q }, { lastname : q } ] }
+
+		User.findOne( query, (error, user ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( 'message' : 'not found' ) if not user
 			return res.status(200).send( user.getPublicFields() )

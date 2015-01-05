@@ -47,6 +47,7 @@ angular
 			$rootScope.$on("initSessionEvent", ( event, currentSessionData ) ->
 				#console.log "initSessionEvent listener"
 				#console.log currentSessionData
+				# TODO: auth in backend by cookie
 				initSession( currentSessionData )
 			)
 
