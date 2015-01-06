@@ -2,6 +2,7 @@
 
 UserCtrl    = require('./users/user.ctrl')
 EmailCtrl   = require('./email/email.ctrl')
+ProfileCtrl = require('./profile/profile.ctrl')
 
 version = 'v1'
 api = "/api/#{version}"
@@ -37,5 +38,8 @@ module.exports = ( app ) ->
 		.get( api + '/users'	, UserCtrl.select )
 		.get( api + '/user'		, UserCtrl.search )
 
-		# email
+		# Profile
+		.get( api + '/profile/:id', ProfileCtrl.getProfile )
+
+		# send email
 		.post( api + '/email'	,  EmailCtrl.sendEmail )

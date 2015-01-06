@@ -7,6 +7,8 @@ email = require('../email/email.ctrl')
 User = require('./user.mdl')
 UserModel = new User()
 
+Profile = require('../profile/profile.mdl')
+
 module.exports =
 
 	login: ( req, res ) ->
@@ -71,5 +73,15 @@ module.exports =
 		User.findOneAndUpdate( { 'token' : token }, update, ( error, user ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( 'message' : 'not found' ) if not user
+
+			# create profile for verified user
+			profile =  new Profile()
+			profile.name = user.name
+			profile.lastname = user.lastname
+			profile.email = user.email
+			profile.save()
+
 			return res.status(200).send( user.getPublicFields() )
 		)
+
+
