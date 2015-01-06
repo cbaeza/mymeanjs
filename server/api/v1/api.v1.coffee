@@ -16,12 +16,13 @@ module.exports = ( app ) ->
 	app
 		.all( '/api/*',
 			(req, res, next) ->
-				console.log( "checking auth: " + req.session.user)
+				console.log( "checking auth...")
 				if not req.session.user
 					console.log "no session"
-					res.status(400).json( { error : 'require auth' } ).send()
+					res.status(401).json( { error : 'require auth' } ).send()
 				else
 					console.log("session active")
+					console.log(req.session)
 					next()
 		)
 		# AUTH
