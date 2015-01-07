@@ -39,7 +39,8 @@ module.exports = ( app ) ->
 		.get( api + '/user'		, UserCtrl.search )
 
 		# Profile
-		.get( api + '/profile/:id', ProfileCtrl.getProfile )
+		.get(  api + '/profile/:id'	, ProfileCtrl.getProfile )
+		.post( api + '/profile'		, ProfileCtrl.createProfile )
 
 		# send email
 		.post( api + '/email'	,  EmailCtrl.sendEmail )
