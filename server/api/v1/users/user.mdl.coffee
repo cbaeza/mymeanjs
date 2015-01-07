@@ -35,7 +35,7 @@ _schema = new mongoose.Schema(
 		default: Date.now()
 )
 
-_fields = '_id name lastname email verified creationDate'
+_fields = '_id name lastname email token verified creationDate'
 
 _schema.methods =
 
