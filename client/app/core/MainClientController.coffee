@@ -48,7 +48,7 @@ angular
 				#console.log "initSessionEvent listener"
 				#console.log currentSessionData
 				# TODO: auth in backend by cookie
-				initSession( currentSessionData )
+				# initSession( currentSessionData )
 			)
 
 			# wrap user data to be storage in sessionStorage and windows
