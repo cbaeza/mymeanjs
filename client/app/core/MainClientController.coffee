@@ -8,10 +8,9 @@ angular
 		'$scope'
 		'$location'
 		'$modal'
-		'ngDialog'
 		'AuthenticatorSrvc'
 		'$rootScope'
-		( $scope, location, $modal, ngDialog, AuthenticatorSrvc, $rootScope ) ->
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope ) ->
 
 			console.log('MainClientController init')
 
@@ -80,7 +79,6 @@ angular
 					( error ) ->
 						console.log error
 						if( error? )
-							# ngDialog.open({  template: "<p>Error #{error}</p>", plain: true })
 							console.log 'error'
 							$scope.system.message = error.data.error
 				)

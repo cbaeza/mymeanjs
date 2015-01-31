@@ -4,6 +4,12 @@ _           = require('lodash')
 
 _schema = new mongoose.Schema(
 
+	userid:
+		type: String
+		require: true
+		indexed: true
+
+
 	name:
 		type: String
 		required: false
