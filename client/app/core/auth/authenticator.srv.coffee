@@ -6,7 +6,7 @@ angular
 		'Restangular'
 		( $q, md5, Restangular ) ->
 
-			console.log('AuthenticatorSrvc init')
+			#console.log('AuthenticatorSrvc init')
 
 			baseUsersUrl = Restangular.all('auth')
 

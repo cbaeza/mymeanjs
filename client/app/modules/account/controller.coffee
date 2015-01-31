@@ -5,7 +5,7 @@ angular
 		'AccountSrvc'
 		( $scope, accountSrvc ) ->
 
-			console.log 'AccountCtrl init'
+			#console.log 'AccountCtrl init'
 
 			accountSrvc.sayHello()
 

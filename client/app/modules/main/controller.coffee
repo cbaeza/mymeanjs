@@ -3,7 +3,8 @@ angular
 		'$scope'
 		'MainSrvc'
 		( $scope, mainService ) ->
-			console.log 'MainCtrl init'
+
+			#console.log 'MainCtrl init'
 
 			$scope.status = "ready to go from Main controller!"
 			$scope.sayHello = ( ) ->

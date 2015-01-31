@@ -5,7 +5,7 @@ angular
 		( $scope, contactSrvc ) ->
 			console.log 'ContactCtrl init'
 
-			contactSrvc.sayHello()
+			#contactSrvc.sayHello()
 
 			$scope.status = "ready to go from ContactCtrl controller!"
 			$scope.sayHello = ( ) ->

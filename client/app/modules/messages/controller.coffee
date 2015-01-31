@@ -4,7 +4,8 @@ angular
 		'$scope'
 		'MessagesSrvc'
 		( $scope, messagesSrvc ) ->
-			console.log 'MessagesCtrl init'
+
+			#console.log 'MessagesCtrl init'
 
 			messagesSrvc.sayHello()
 

@@ -12,7 +12,8 @@ angular
 			'RegisterSrvc'
 			'$modalInstance'
 			( $scope, location, modal, RegisterSrvc, $modalInstance ) ->
-				console.log('RegisterModalCtrl init')
+
+				#console.log('RegisterModalCtrl init')
 
 				$scope.newUser = {
 					name: null

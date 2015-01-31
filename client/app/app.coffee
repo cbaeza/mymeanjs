@@ -92,10 +92,11 @@ angular
 				#######################################################
 				#
 				# Check session saved in session storage
+				# TODO: enable restore session in backend via cookie?
 				#
 				#######################################################
-				console.log "sessionStorage.currentSession"
-				console.log sessionStorage.currentSession
+				#console.log "sessionStorage.currentSession"
+				#console.log sessionStorage.currentSession
 				if sessionStorage.currentSession?
 					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
 					# let everything know that we need to restore session now.

@@ -5,7 +5,7 @@ angular
 		'ControlPanelSrvc'
 		( $scope, controlPanelSrvc ) ->
 
-			console.log 'ControlpanelCtrl init'
+			#console.log 'ControlpanelCtrl init'
 
 			controlPanelSrvc.sayHello()
 

@@ -5,7 +5,7 @@ angular
 		'FavouritesSrvc'
 		( $scope, favouritesSrvc ) ->
 
-			console.log 'FavouritesCtrl init'
+			#console.log 'FavouritesCtrl init'
 
 			favouritesSrvc.sayHello()
 

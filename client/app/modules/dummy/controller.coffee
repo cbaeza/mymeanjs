@@ -3,7 +3,8 @@ angular
 		'$scope'
 		'DummySrvc'
 		( $scope, dummySrvc ) ->
-			console.log 'DummyCtrl init'
+
+			#console.log 'DummyCtrl init'
 
 			dummySrvc.sayHello()
 
