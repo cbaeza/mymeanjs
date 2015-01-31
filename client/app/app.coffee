@@ -17,6 +17,8 @@ angular
 		'module.myoffers'
 		'module.account'
 		'module.favourites'
+		'module.about'
+		'module.contact'
 
 		]).config([
 			'$routeProvider'
@@ -52,6 +54,14 @@ angular
 					.when '/favourites',
 						templateUrl: '/partials/app/modules/favourites/favourites.html'
 						controller: 'FavouritesCtrl'
+
+					.when '/about',
+						templateUrl: '/partials/app/modules/about/about.html'
+						controller: 'AboutCtrl'
+
+					.when '/contact',
+						templateUrl: '/partials/app/modules/contact/contact.html'
+						controller: 'ContactCtrl'
 
 					.otherwise
 						redirectTo: '/'
