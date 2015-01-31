@@ -43,9 +43,18 @@ angular
 						templateUrl: '/partials/app/modules/myoffers/myoffers.html'
 						controller: 'MyOffersCtrl'
 
-					.when '/profile',
+					.when '/profile/:id/',
 						templateUrl: '/partials/app/templates/profile.html'
 						controller: 'ProfilesCtrl'
+						resolve:
+							userProfile: [
+								'$route'
+								'ProfilesSrvc'
+								($route, ProfilesSrvc) ->
+									console.log("resolving : " + $route.current.params.id)
+									return ProfilesSrvc.getProfile( $route.current.params.id )
+							]
+
 
 					.when '/account',
 						templateUrl: '/partials/app/modules/account/account.html'

@@ -9,7 +9,6 @@ _schema = new mongoose.Schema(
 		require: true
 		indexed: true
 
-
 	name:
 		type: String
 		required: false

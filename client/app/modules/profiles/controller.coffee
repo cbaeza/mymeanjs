@@ -4,9 +4,11 @@ angular
 		'$scope'
 		'$location'
 		'ProfilesSrvc'
-		( $scope, location, profilesSrvc ) ->
+		'userProfile'
+		( $scope, location, profilesSrvc, userProfile ) ->
 
-			#console.log 'ProfilesCtrl init'
+			console.log 'ProfilesCtrl init'
+			console.log(userProfile)
 
 			# check authenticate user
 			#console.log(window.bootstrappedUserObject)

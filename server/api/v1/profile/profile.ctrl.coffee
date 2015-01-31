@@ -13,7 +13,7 @@ module.exports =
 		r = new RegExp('^' + q  + '$', "i")
 
 		if checkForHexRegExp.test(q)
-			query = { $or : [ { _id : q }, { email : r }, { name : r }, { lastname : r } ] }
+			query = { $or : [ { _id : q }, { userid : q }, { email : r }, { name : r }, { lastname : r } ] }
 		else
 			query = { $or : [ { email : r }, { name : r }, { lastname : r } ] }
 
