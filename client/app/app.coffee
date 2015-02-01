@@ -44,7 +44,7 @@ angular
 						controller: 'MyOffersCtrl'
 
 					.when '/profile/:id/',
-						templateUrl: '/partials/app/templates/profile.html'
+						templateUrl: '/partials/app/modules/profiles/profile.html'
 						controller: 'ProfilesCtrl'
 						resolve:
 							userProfile: [
