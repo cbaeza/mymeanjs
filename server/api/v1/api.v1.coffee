@@ -35,12 +35,14 @@ module.exports = ( app ) ->
 		# API V1
 		.get( api 				, ( req, res ) -> res.json( versioninfo ))
 		.get( api + '/version'	, ( req, res ) -> res.json( versioninfo ))
+
+		# USER
 		.get( api + '/users'	, UserCtrl.select )
 		.get( api + '/user'		, UserCtrl.search )
 
-		# Profile
+		# PROFILE
 		.get(  api + '/profile/:id'	, ProfileCtrl.getProfile )
 		.post( api + '/profile'		, ProfileCtrl.createProfile )
 
-		# send email
+		# EMAIL
 		.post( api + '/email'	,  EmailCtrl.sendEmail )
