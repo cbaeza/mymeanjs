@@ -1,2 +1,2 @@
-Dummy module
+Home module
 ============

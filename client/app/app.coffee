@@ -9,6 +9,7 @@ angular
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
+		'module.home'
 		'module.dummy'
 		'module.main'
 		'module.profiles'
@@ -28,8 +29,8 @@ angular
 
 				$rp
 					.when '/',
-						templateUrl: '/partials/app/templates/dummy.html'
-						controller: 'DummyCtrl'
+						templateUrl: '/partials/app/modules/home/home.html'
+						controller: 'HomeCtrl'
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
