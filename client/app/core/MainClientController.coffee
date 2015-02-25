@@ -91,6 +91,7 @@ angular
 						$scope.user.registeredUser = false
 						window.bootstrappedUserObject = null
 						delete sessionStorage.currentSession
+						$scope.system.message = ""
 						location.path('/')
 				)
 
