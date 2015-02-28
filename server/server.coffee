@@ -2,7 +2,7 @@ express 		= require('express')
 methodOverride 	= require('method-override')
 bodyParser		= require('body-parser')
 cookieparser    = require("cookie-parser")
-expressSession  = require('express-session')
+session			= require('express-session')
 
 env = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 # init config passing current environment
@@ -27,7 +27,7 @@ app.use express.static( "./bower_components" )
 
 # cookie based session
 app.use cookieparser()
-app.use expressSession(
+app.use session(
 	{
 		secret: 'secret'
 		cookie:
