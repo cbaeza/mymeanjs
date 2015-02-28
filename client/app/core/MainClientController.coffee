@@ -10,7 +10,9 @@ angular
 		'$modal'
 		'AuthenticatorSrvc'
 		'$rootScope'
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope ) ->
+		'$cookies'
+
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies ) ->
 
 			console.log('MainClientController init')
 
@@ -47,7 +49,7 @@ angular
 				#console.log "initSessionEvent listener"
 				#console.log currentSessionData
 				# TODO: auth in backend by cookie
-				# initSession( currentSessionData )
+				initSession( currentSessionData )
 			)
 
 			# wrap user data to be storage in sessionStorage and windows
@@ -91,6 +93,7 @@ angular
 						$scope.user.registeredUser = false
 						window.bootstrappedUserObject = null
 						delete sessionStorage.currentSession
+						$cookies['connect.sid'] = null
 						$scope.system.message = ""
 						location.path('/')
 				)

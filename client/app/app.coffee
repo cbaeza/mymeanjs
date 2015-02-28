@@ -6,6 +6,7 @@ angular
 		'ui.bootstrap'
 		'restangular'
 		'angular-md5'
+		'ngCookies'
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
@@ -87,21 +88,22 @@ angular
 				restAngularProvider.setBaseUrl('http://localhost:3030/')
 
 		]).run(
-			( $rootScope ) ->
+			( $rootScope, $cookies) ->
 				console.log "app run"
 
 				#######################################################
 				#
-				# Check session saved in session storage
-				# TODO: enable restore session in backend via cookie?
+				# Check session storage and session cookie
 				#
 				#######################################################
-				#console.log "sessionStorage.currentSession"
-				#console.log sessionStorage.currentSession
-				if sessionStorage.currentSession?
-					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
+				connect = $cookies['connect.sid']
+				console.log connect
+				console.log sessionStorage.currentSession
+				if connect? and sessionStorage.currentSession?
 					# let everything know that we need to restore session now.
+					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
 					window.onload = ( ) ->
 						#console.log "on load"
 						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession) )
+
 	)
