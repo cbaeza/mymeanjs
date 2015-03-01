@@ -1,7 +1,7 @@
 // LOGIN FORM
 .navbar-collapse.collapse( id="navbar" )
 
-	div( ng-show="user.registeredUser == false" )
+	div( ng-show="user.isAuthenticated == false" )
 
 		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
@@ -19,7 +19,7 @@
 				button.btn.btn-primary( type="button" ng-click="register($event)" )
 					span Register
 
-	div( ng-show="user.registeredUser == true" )
+	div( ng-show="user.isAuthenticated == true" )
 		.navbar-form.navbar-right
 
 			//- Single button

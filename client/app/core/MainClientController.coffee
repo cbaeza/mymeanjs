@@ -35,8 +35,7 @@ angular
 				email: null
 				password: null
 				lastLogin: null
-				creationDate: null
-				registeredUser: false
+				isAuthenticated: false
 			}
 
 			# toogle flag to open/close menu
@@ -45,28 +44,29 @@ angular
 			}
 
 			# triggered on load document and if exist a user session on session storage
-			$rootScope.$on("initSessionEvent", ( event, currentSessionData ) ->
-				#console.log "initSessionEvent listener"
-				#console.log currentSessionData
-				# TODO: auth in backend by cookie
-				initSession( currentSessionData )
+			$rootScope.$on("initSessionEvent", ( event, currentSessionData, token ) ->
+				sessionData = {}
+				sessionData.user = currentSessionData
+				sessionData.token = token
+				initSession( sessionData )
 			)
 
 			# wrap user data to be storage in sessionStorage and windows
 			initSession = ( sessionData ) ->
 				#console.log "on restoreSession"
-				console.log sessionData
-				$scope.user._id             = sessionData._id
-				$scope.user.name            = sessionData.name
-				$scope.user.lastname        = sessionData.lastname
-				$scope.user.email           = sessionData.email
-				$scope.user.creationDate    = sessionData.creationDate
-				$scope.user.registeredUser  = true
+				#console.log sessionData.user
+				#console.log sessionData.token
+				$scope.user._id             = sessionData.user._id
+				$scope.user.name            = sessionData.user.name
+				$scope.user.lastname        = sessionData.user.lastname
+				$scope.user.email           = sessionData.user.email
+				$scope.user.isAuthenticated = true
 				$scope.user.lastLogin       = new Date()
 				delete $scope.user.password
 				# refresh user
-				window.bootstrappedUserObject = $scope.user
-				$scope.system.message = "| #{$scope.user.name} #{$scope.user.lastname}"
+				window.bootstrappedUserObject 	= $scope.user
+				sessionStorage.token 			= sessionData.token
+				$scope.system.message 			= "| #{$scope.user.name} #{$scope.user.lastname}"
 
 
 			$scope.authenticate = ( $event ) ->
@@ -88,16 +88,20 @@ angular
 			$scope.logout = ( $event ) ->
 				AuthenticatorSrvc.logout($scope.user).then (
 					( data ) ->
-						#console.log('logout done')
 						console.log data
-						$scope.user.registeredUser = false
+						$scope.user.isAuthenticated = false
 						window.bootstrappedUserObject = null
 						delete sessionStorage.currentSession
-						$cookies['connect.sid'] = null
+						delete sessionStorage.token
 						$scope.system.message = ""
 						location.path('/')
 				)
 
+			#######################################################
+			#
+			# Register
+			#
+			#######################################################
 			$scope.register = ( $event ) ->
 				console.log( 'register')
 				$modal.open({
@@ -107,11 +111,6 @@ angular
 				}).result.then (data) ->
 					console.log data
 
-			# menu for logged in user
-			$scope.toggleDropdown = ($event) ->
-				$event.preventDefault()
-				$event.stopPropagation()
-				$scope.status.isopen = !$scope.status.isopen
 
 			#######################################################
 			#
@@ -127,6 +126,12 @@ angular
 			# lang
 			$scope.langDropDown = false
 
+			# menu for logged in user
+			$scope.toggleDropdown = ($event) ->
+				$event.preventDefault()
+				$event.stopPropagation()
+				$scope.status.isopen = !$scope.status.isopen
+				
 			$scope.useLang = ( $event, lang ) ->
 				#console.log( lang )
 

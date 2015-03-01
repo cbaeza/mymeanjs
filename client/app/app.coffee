@@ -26,7 +26,7 @@ angular
 			'$routeProvider'
 			'$locationProvider'
 			'RestangularProvider'
-			( $rp, $lp, restAngularProvider ) ->
+			( $rp, $lp, RestangularProvider ) ->
 
 				$rp
 					.when '/',
@@ -85,25 +85,33 @@ angular
 				$lp.hashPrefix( '!' )
 
 				# restangular base api url
-				restAngularProvider.setBaseUrl('http://localhost:3030/')
+				RestangularProvider.setBaseUrl('http://localhost:3030/')
+				
+				# add interceptor to set auth JWT token if exists
+				#RestangularProvider.addFullRequestInterceptor( ( headers, params, element, httpConfig, $window ) ->
+				#	console.log($window.sessionStorage)
+				#	if $window.sessionStorage? and $window.sessionStorage.token?
+				#		headers.Authorization = 'Bearer ' + $window.sessionStorage.token
+				#		return headers
+				#)
+
+				RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} });
 
 		]).run(
-			( $rootScope, $cookies) ->
+			( $rootScope ) ->
 				console.log "app run"
-
 				#######################################################
 				#
-				# Check session storage and session cookie
+				# Check session storage and session token provided by JWT
 				#
 				#######################################################
-				connect = $cookies['connect.sid']
-				console.log connect
 				console.log sessionStorage.currentSession
-				if connect? and sessionStorage.currentSession?
+				console.log sessionStorage.token
+				if sessionStorage.token? and sessionStorage.currentSession?
 					# let everything know that we need to restore session now.
 					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
 					window.onload = ( ) ->
 						#console.log "on load"
-						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession) )
+						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession), sessionStorage.token )
 
 	)

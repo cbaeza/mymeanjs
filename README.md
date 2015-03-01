@@ -21,3 +21,10 @@ A scalable and modularizable architecture for nodejs and angularjs app.
 # Start server
 
     npm start
+    
+## Utils
+    
+    {
+    "email":"carlos.baeza@posteo.de",
+    "password":"c79c6f489015e0bc97f892e357db7156"
+    }
