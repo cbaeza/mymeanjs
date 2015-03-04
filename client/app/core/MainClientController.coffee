@@ -66,7 +66,7 @@ angular
 				# refresh user
 				window.bootstrappedUserObject 	= $scope.user
 				sessionStorage.token 			= sessionData.token
-				$scope.system.message 			= "| #{$scope.user.name} #{$scope.user.lastname}"
+				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
 
 			$scope.authenticate = ( $event ) ->

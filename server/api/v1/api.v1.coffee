@@ -18,6 +18,7 @@ versioninfo = {
 
 module.exports = ( app, secret ) ->
 
+	# protect you api via express
 	#.all( '/api/*',
 	#	(req, res, next) ->
 	#		console.log( "checking user on session...")
@@ -31,7 +32,7 @@ module.exports = ( app, secret ) ->
 	#			next()
 	#)
 	app
-		# AUTH using JWT (JSON web token)
+		# AUTH using JWT (JSON web token). If user match, it return a session token
 		.post( '/auth/login', (req, res) ->
 			UserModel.authenticate req.body, ( error, user ) ->
 				return res.status(400).json({ 'error' : error }) if error
@@ -50,6 +51,10 @@ module.exports = ( app, secret ) ->
 			res.status(200).json( 'message': 'logged out')
 		)
 	
+		#################################################################
+		# 'api/*'' will be protected via token generated via JWT
+		#################################################################
+
 		#.post( '/auth/login' 			, UserCtrl.login )
 		#.post( '/auth/logout' 			, UserCtrl.logout )
 		.post( '/auth/accounts'			, UserCtrl.create )
