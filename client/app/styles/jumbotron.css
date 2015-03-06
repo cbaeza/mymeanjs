@@ -1,6 +1,8 @@
 body {
+	height: 100%;
 	padding-top: 50px;
 	padding-bottom: 20px;
+	position: relative;
 }
 
 .spacer{
@@ -12,3 +14,4 @@ body {
 	font-size: 14px;
 	float: right;
 }
+
