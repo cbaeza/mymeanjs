@@ -7,6 +7,7 @@ angular
 		'restangular'
 		'angular-md5'
 		'ngCookies'
+		'pascalprecht.translate'
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
@@ -26,7 +27,8 @@ angular
 			'$routeProvider'
 			'$locationProvider'
 			'RestangularProvider'
-			( $rp, $lp, RestangularProvider ) ->
+			'$translateProvider'
+			( $rp, $lp, RestangularProvider, $translateProvider ) ->
 
 				$rp
 					.when '/',
@@ -96,6 +98,15 @@ angular
 				#)
 
 				RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} });
+
+				# angular-translate	
+				# determine autimatically language via content-negotiation
+				#$translateProvider.determinePreferredLanguage()
+				$translateProvider.useUrlLoader('/public_services/i18n')
+				$translateProvider.preferredLanguage('en_US')
+				$translateProvider.fallbackLanguage('en_US')
+				$translateProvider.usePostCompiling(true)
+				$translateProvider.useLocalStorage()
 
 		]).run(
 			( $rootScope ) ->

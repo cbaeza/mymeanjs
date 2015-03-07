@@ -8,6 +8,8 @@ ProfileCtrl = require('./profile/profile.ctrl')
 User 		= require('./users/user.mdl')
 UserModel 	= new User()
 
+i18nCtrl 	= require('../../public_services/i18n/i18n.ctrl')
+
 version = 'v1'
 api = "/api/#{version}"
 
@@ -50,9 +52,18 @@ module.exports = ( app, secret ) ->
 			console.log("OK, logout")
 			res.status(200).json( 'message': 'logged out')
 		)
+
+		#################################################################
+		#
+		# '/public/*' public zone utilized to get data like i18n
+		#
+		#################################################################
+		.get( '/public_services/i18n',	i18nCtrl.getKeys )
 	
 		#################################################################
-		# 'api/*'' will be protected via token generated via JWT
+		#
+		# 'api/*' (V1) will be protected via token generated via JWT
+		#
 		#################################################################
 
 		#.post( '/auth/login' 			, UserCtrl.login )
