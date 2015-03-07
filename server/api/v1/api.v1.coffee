@@ -62,7 +62,7 @@ module.exports = ( app, secret ) ->
 	
 		#################################################################
 		#
-		# 'api/*' (V1) will be protected via token generated via JWT
+		# '/api/*' (V1) will be protected via token generated via JWT
 		#
 		#################################################################
 

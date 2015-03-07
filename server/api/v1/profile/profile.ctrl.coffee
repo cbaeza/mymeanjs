@@ -1,6 +1,5 @@
 
 Profile =  require('./profile.mdl')
-ProfileModel = new Profile()
 
 module.exports =
 
