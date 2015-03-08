@@ -12,6 +12,9 @@ _schema = new mongoose.Schema(
 		indexed:true
 
 	keys:[]
+
+	,
+	{ collection : 'i18n' }
 )
 
 module.exports = mongoose.model( _modelName, _schema)
