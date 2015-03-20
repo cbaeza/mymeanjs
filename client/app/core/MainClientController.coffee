@@ -11,8 +11,9 @@ angular
 		'AuthenticatorSrvc'
 		'$rootScope'
 		'$cookies'
+		'$translate'
 
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies ) ->
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate ) ->
 
 			console.log('MainClientController init')
 
@@ -69,7 +70,7 @@ angular
 				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
 
-			$scope.authenticate = ( $event ) ->
+			$scope.authenticate = ( event ) ->
 				AuthenticatorSrvc.login($scope.user).then(
 
 					( data ) ->
@@ -85,7 +86,7 @@ angular
 							$scope.system.message = error.data.error
 				)
 
-			$scope.logout = ( $event ) ->
+			$scope.logout = ( event ) ->
 				AuthenticatorSrvc.logout($scope.user).then (
 					( data ) ->
 						console.log data
@@ -102,8 +103,10 @@ angular
 			# Register
 			#
 			#######################################################
-			$scope.register = ( $event ) ->
+			$scope.register = ( event ) ->
 				console.log( 'register')
+				event.preventDefault()
+				event.stopPropagation()
 				$modal.open({
 					controller: 'RegisterModalCtrl'
 					templateUrl: '/partials/app/templates/register.html'
@@ -120,20 +123,30 @@ angular
 
 			# languages
 			$scope.providers = {
-				languages: ["es", "gb", "ga"]
+				languages: [
+					{ key:"de_DE", flag:"de", text: "Deutsch", },
+					{ key:"en_GB", flag:"gb", text: "English"},
+					{ key:"es_ES", flag:"es", text: "Español"},
+				]
 			}
 
 			# lang
 			$scope.langDropDown = false
 
 			# menu for logged in user
-			$scope.toggleDropdown = ($event) ->
-				$event.preventDefault()
-				$event.stopPropagation()
+			$scope.toggleDropdown = (event) ->
+				event.preventDefault()
+				event.stopPropagation()
 				$scope.status.isopen = !$scope.status.isopen
 				
-			$scope.useLang = ( $event, lang ) ->
-				#console.log( lang )
+			$scope.useLang = ( event, lang ) ->
+				console.log( lang )
+				event.preventDefault()
+				event.stopPropagation()
+
+				$translate.use( lang.key )
+				$cookies.lang = lang.key
+				$scope.langDropDown = false
 
 			$scope.getLangCss = ( lang ) ->
 				#console.log( lang )

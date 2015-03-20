@@ -86,5 +86,5 @@
 			ul.dropdown-menu
 				li( ng-repeat="lang in providers.languages" )
 					a.icon-btn(ng-click="useLang($event, lang)")
-						span.flag-icon( ng-class="getLangCss(lang)" )
-						span lang
+						span.flag-icon( ng-class="getLangCss(lang.flag)" )
+						span {{ lang.text }} 
