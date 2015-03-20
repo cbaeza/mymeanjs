@@ -12,8 +12,9 @@ angular
 		'$rootScope'
 		'$cookies'
 		'$translate'
+		'Restangular'
 
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate ) ->
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate, Restangular) ->
 
 			console.log('MainClientController init')
 
@@ -68,6 +69,9 @@ angular
 				window.bootstrappedUserObject 	= $scope.user
 				sessionStorage.token 			= sessionData.token
 				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
+
+				Restangular.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} })
+				console.log("token updated " + sessionStorage.token)
 
 
 			$scope.authenticate = ( event ) ->
