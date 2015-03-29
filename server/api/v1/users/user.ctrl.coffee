@@ -50,10 +50,10 @@ module.exports =
 
 		user.save( ( error ) ->
 			
-			if ( error.toString().indexOf('E11000') > -1)
-				return res.status(400).json({'error:':'User email already registered!'})
+			if(error)
+				return res.status(400).json({'error:':'User email already registered!'}) if ( error.toString().indexOf('E11000') > -1)
+				return res.status(400).json({ 'error' : error }) if error
 			
-			return res.status(400).json({ 'error' : error }) if error
 			#return email.sendAccountVerificationEmail(req, res, user)
 			return res.status(200).send( user.getPublicFields() )
 		)

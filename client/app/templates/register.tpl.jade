@@ -3,70 +3,72 @@ div( ng-controller="RegisterModalCtrl" )
 		h3.modal-title Register as new user
 
 	.modal-body
-		div( ng-show="isRegister==false")
-			form( role="form" name="registerForm" novalidate ng-submit="doRegister()")
+		.view
+			div( ng-show="isRegister==false")
+				form( role="form" name="registerForm" novalidate ng-submit="doRegister()")
 
-				.form-group
-					input.form-control(
-						type="text"
-						name="name"
-						placeholder="Enter your name"
-						ng-model="newUser.name"
-						required)
+					.form-group
+						input.form-control(
+							type="text"
+							name="name"
+							placeholder="Enter your name"
+							ng-model="newUser.name"
+							required)
 
-				.form-group
-					input.form-control(
-						type="text"
-						name="lastanme"
-						placeholder="Enter your lastname"
-						ng-model="newUser.lastname"
-						required)
+					.form-group
+						input.form-control(
+							type="text"
+							name="lastanme"
+							placeholder="Enter your lastname"
+							ng-model="newUser.lastname"
+							required)
 
-				.form-group
-					input.form-control(
-						type="email"
-						name="email"
-						placeholder="Enter your email"
-						ng-model="newUser.email"
-						required)
+					.form-group
+						input.form-control(
+							type="email"
+							name="email"
+							placeholder="Enter your email"
+							ng-model="newUser.email"
+							required)
 
-					div.msg-error( ng-show="!registerForm.email.$valid")
-						span Enter a valid email
+						div.msg-error( ng-show="!registerForm.email.$valid")
+							span Enter a valid email
 
-				.form-group
-					input.form-control(
-						type="password"
-						id="pw1"
-						name="pw1"
-						placeholder="Enter a password"
-						ng-model="newUser.password"
-						required)
+					.form-group
+						input.form-control(
+							type="password"
+							id="pw1"
+							name="pw1"
+							placeholder="Enter a password"
+							ng-model="newUser.password"
+							required)
 
-				.form-group
-					input.form-control(
-						type="password"
-						id="pw2"
-						name="pw2"
-						placeholder="Repeat the password"
-						ng-model="newUser.password2"
-						required)
+					.form-group
+						input.form-control(
+							type="password"
+							id="pw2"
+							name="pw2"
+							placeholder="Repeat the password"
+							ng-model="newUser.password2"
+							required)
 
-					div.msg-error( ng-show="newUser.password2 != newUser.password")
-						span Passwords don't match
+						div.msg-error( ng-show="newUser.password2 != newUser.password")
+							span Passwords don't match
 
-			.modal-footer
-				button.btn.btn-primary( type="button" ng-click="doRegister($event)"
-					ng-disabled="registerForm.$invalid && !registerForm.email.$valid")
-					span Register
+				.modal-footer
+					button.btn.btn-primary( type="button" ng-click="doRegister($event)"
+						ng-disabled="registerForm.$invalid && !registerForm.email.$valid")
+						span Register
 
-				button.btn.btn-warning( type="button" ng-click="close($event)" )
-					span Cancel
+					button.btn.btn-warning( type="button" ng-click="close($event)" )
+						span Cancel
 
-		div( ng-show="isRegister==true")
-			h1 Thanks for your registration !
-			p To finish the registration process we send a email with a confirmation link. Click the link to activate your account.
-			p If no email is comming, please check your spam directory or contact us to bla@bla.de.
+		.view
+			div( ng-show="isRegister==true")
+				h1 Thanks for your registration !
+				p To finish the registration process we send a email with a confirmation link. Click the link to activate your account.
+				p If no email is comming, please check your spam directory or contact us to bla@bla.de.
 
-			.modal-footer
-				button.btn.btn-success( type="button" ng-click="close($event)" )
-					span Close
+				.modal-footer
+					button.btn.btn-success( type="button" ng-click="close($event)" )
+						span Close

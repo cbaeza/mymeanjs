@@ -10,7 +10,7 @@ angular
 			'$location'
 			'$modal'
 			'RegisterSrvc'
-			( $scope, location, modal, RegisterSrvc ) ->
+			( $scope, $location, $modal, RegisterSrvc ) ->
 
 				#console.log('RegisterModalCtrl init')
 
@@ -34,5 +34,5 @@ angular
 
 				$scope.close = ( event ) ->
 					console.log('do Register')
-					$modalInstance.dismiss('cancel')
+					$scope.$dismiss('cancel')
 	])
