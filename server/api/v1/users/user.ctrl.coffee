@@ -42,6 +42,7 @@ module.exports =
 
 	create: ( req, res ) ->
 		user = new User(req.body)
+		user.email = req.body.email.toLowerCase()
 		user.token = uuid.v1()
 		user.verified = false
 		user.password = md5(user.password)
