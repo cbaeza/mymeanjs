@@ -10,8 +10,7 @@ angular
 			'$location'
 			'$modal'
 			'RegisterSrvc'
-			'$modalInstance'
-			( $scope, location, modal, RegisterSrvc, $modalInstance ) ->
+			( $scope, location, modal, RegisterSrvc ) ->
 
 				#console.log('RegisterModalCtrl init')
 
