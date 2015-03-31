@@ -34,11 +34,11 @@ angular
 				$rp
 					.when '/',
 						templateUrl: '/partials/app/modules/home/home.html'
-						controller: 'NewsCtrl'
+						controller: 'HomeCtrl'
 
 					.when '/news',
 						templateUrl: '/partials/app/modules/news/news.html'
-						controller: 'MessagesCtrl'
+						controller: 'NewsCtrl'
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
@@ -93,7 +93,7 @@ angular
 
 				# restangular base api url
 				RestangularProvider.setBaseUrl('http://localhost:3030/')
-				
+
 				# add interceptor to set auth JWT token if exists
 				#RestangularProvider.addFullRequestInterceptor( ( headers, params, element, httpConfig, $window ) ->
 				#	console.log($window.sessionStorage)
@@ -104,7 +104,7 @@ angular
 
 				RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} });
 
-				# angular-translate	
+				# angular-translate
 				# determine autimatically language via content-negotiation
 				#$translateProvider.determinePreferredLanguage()
 				$translateProvider.useUrlLoader('/public_services/i18n')
