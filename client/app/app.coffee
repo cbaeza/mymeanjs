@@ -120,7 +120,6 @@ angular
 				console.log sessionStorage.token
 				if sessionStorage.token? and sessionStorage.currentSession?
 					# let everything know that we need to restore session now.
-					window.bootstrappedUserObject = angular.fromJson(sessionStorage.currentSession)
 					window.onload = ( ) ->
 						#console.log "on load"
 						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession), sessionStorage.token )

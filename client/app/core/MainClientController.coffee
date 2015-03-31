@@ -67,6 +67,8 @@ angular
 				delete $scope.user.password
 				# refresh user
 				window.bootstrappedUserObject 	= $scope.user
+				# save session after successfully login
+				sessionStorage.currentSession 	= angular.toJson($scope.user)
 				sessionStorage.token 			= sessionData.token
 				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
@@ -80,8 +82,6 @@ angular
 					( data ) ->
 						#console.log(data)
 						initSession( data )
-						# save session after successfully login
-						sessionStorage.currentSession = angular.toJson($scope.user)
 
 					( error ) ->
 						console.log error
