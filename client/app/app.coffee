@@ -15,6 +15,7 @@ angular
 		'module.dummy'
 		'module.main'
 		'module.profiles'
+		'module.news'
 		'module.messages'
 		'module.controlpanel'
 		'module.myoffers'
@@ -33,7 +34,11 @@ angular
 				$rp
 					.when '/',
 						templateUrl: '/partials/app/modules/home/home.html'
-						controller: 'HomeCtrl'
+						controller: 'NewsCtrl'
+
+					.when '/news',
+						templateUrl: '/partials/app/modules/news/news.html'
+						controller: 'MessagesCtrl'
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
