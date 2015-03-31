@@ -1,9 +1,21 @@
 div.jumbotron
 	div.container
+		
 		h1 Module Home say Hello !
 		p "status: " {{status}}
 
-		div.btn-group
+		div.row
+			div.col-md-12
+					div.col-md-6.show-grid
+						div( style="height: 350px" )
+							carousel( interval="interval" )
+								slide( ng-repeat="slide in slides" active="slide.active" )
+									img( ng-src="{{slide.image}}" style="margin:auto;")
+									div( class="carousel-caption" )
+										h4 Slide {{$index}}
+										p {{slide.text}}
+
+		//-- div.btn-group
 			label( class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable ) {{ buttonMessage }}
 
 div.container
