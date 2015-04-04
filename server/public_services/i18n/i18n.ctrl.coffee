@@ -11,9 +11,9 @@ module.exports =
 		console.log _lang
 
 		i18nModel.findOne( {lang : _lang}, (error, result ) ->
-			console.log result
+			console.log result.labels
 			console.log error
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( 'message' : 'not language found' ) if not result
-			return res.status(200).send( result )
+			return res.status(200).send( result.labels )
 		)

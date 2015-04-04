@@ -136,6 +136,17 @@ angular
 
 			# lang
 			$scope.langDropDown = false
+			$scope.lang = $scope.providers.languages[1]
+
+			if( localStorage.NG_TRANSLATE_LANG_KEY? )  
+				# console.log localStorage.NG_TRANSLATE_LANG_KEY
+				selectedKey = localStorage.NG_TRANSLATE_LANG_KEY
+				angular.forEach( $scope.providers.languages, ( lang ) ->
+					#console.log(lang)
+					if lang.key  is selectedKey 
+						$scope.lang = lang
+				)
+
 
 			# menu for logged in user
 			$scope.toggleDropdown = (event) ->
@@ -151,6 +162,7 @@ angular
 				$translate.use( lang.key )
 				$cookies.lang = lang.key
 				$scope.langDropDown = false
+				$scope.lang = lang
 
 			$scope.getLangCss = ( lang ) ->
 				#console.log( lang )

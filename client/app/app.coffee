@@ -108,8 +108,8 @@ angular
 				# determine autimatically language via content-negotiation
 				#$translateProvider.determinePreferredLanguage()
 				$translateProvider.useUrlLoader('/public_services/i18n')
-				$translateProvider.preferredLanguage('en_US')
-				$translateProvider.fallbackLanguage('en_US')
+				$translateProvider.preferredLanguage('en_GB')
+				$translateProvider.fallbackLanguage('en_GB')
 				$translateProvider.usePostCompiling(true)
 				$translateProvider.useLocalStorage()
 

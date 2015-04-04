@@ -13,11 +13,11 @@
 
 			div.form-group.spacer
 				button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
-					span Login
+					span  {{ 'login' | translate }}
 
 			div.form-group
 				button.btn.btn-primary( type="button" ng-click="register($event)" )
-					span Register
+					span  {{ 'register' | translate }}
 
 	div( ng-show="user.isAuthenticated == true" )
 		.navbar-form.navbar-right
@@ -34,11 +34,11 @@
 
 					li( role="presentation" )
 						a( role="menuitem" href="/news" )
-							span News
+							span  {{ 'news' | translate }}
 
 					li( role="presentation" )
 						a( role="menuitem" href="/messages" )
-							span Messages
+							span  {{ 'messages' | translate }}
 							//span.badge 42
 
 					li
@@ -46,46 +46,46 @@
 
 					li( role="presentation" )
 						a( role="menuitem" href="/controlpanel" )
-							span Control panel
+							span  {{ 'control_panel' | translate }}
 
 					li( role="presentation" )
 						a( role="menuitem"  href="/myoffers" )
-							span My offers
+							span  {{ 'my_offers' | translate }}
 
 					li( role="presentation" )
 						a( role="menuitem"  href="/profile/{{user._id}}"  )
-							span Profile
+							span  {{ 'profile' | translate }}
 
 					li( role="presentation" )
 						a( role="menuitem"  href="/account" )
-							span Account information
+							span {{ 'account_information' | translate }}
 
 					li( role="presentation" )
 						a( role="menuitem"  href="/favourites" )
-							span Favourites
+							span {{ 'favourites' | translate }}
 
 					li
 						.divider
 
 					li( role="presentation" )
 						a( role="menuitem" href="/logout" ng-click="logout( $event )" )
-							span logout
+							span  {{ 'logout' | translate }}
 
 	ul.nav.navbar-nav.pull-left
 		li
 			a.icon-btn( href="/about" )
-				i.fa.fa-users
+				//--i.fa.fa-users
 				span {{ 'about' | translate }}
 
 		li
 			a.icon-btn( href="/contact" )
-				i.fa.fa-envelope
-				span contact
+				//-- i.fa.fa-envelope
+				span {{ 'contact' | translate }}
 
 		li.dropdown(is-open="langDropDown")
 			a.icon-btn(dropdown-toggle)
-				i.fa.fa-caret-down
-				span lang
+				//-- i.fa.fa-caret-down
+				span {{lang.text}}
 
 			ul.dropdown-menu
 				li( ng-repeat="lang in providers.languages" )

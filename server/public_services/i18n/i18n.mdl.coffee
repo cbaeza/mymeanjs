@@ -11,7 +11,7 @@ _schema = new mongoose.Schema(
 		require: true
 		indexed:true
 
-	keys:[]
+	labels:[]
 
 	,
 	{ collection : 'i18n' }
