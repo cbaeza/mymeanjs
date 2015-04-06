@@ -115,18 +115,5 @@ angular
 
 		]).run(
 			( $rootScope ) ->
-				console.log "app run"
-				#######################################################
-				#
-				# Check session storage and session token provided by JWT
-				#
-				#######################################################
-				console.log sessionStorage.currentSession
-				console.log sessionStorage.token
-				if sessionStorage.token? and sessionStorage.currentSession?
-					# let everything know that we need to restore session now.
-					window.onload = ( ) ->
-						#console.log "on load"
-						$rootScope.$broadcast('initSessionEvent', angular.fromJson(sessionStorage.currentSession), sessionStorage.token )
 
 	)

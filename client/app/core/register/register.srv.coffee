@@ -18,6 +18,4 @@ angular
 				# POST /accounts
 				return baseUsersUrl.post(newUser)
 
-
-			return
 	])

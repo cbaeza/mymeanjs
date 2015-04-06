@@ -13,10 +13,12 @@ angular
 		'$cookies'
 		'$translate'
 		'Restangular'
+		'AppUserFactory'
 
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate, Restangular) ->
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate, Restangular, AppUserFactory) ->
 
 			console.log('MainClientController init')
+			console.log(AppUserFactory.currentUser)
 
 			# system messages in header
 			$scope.system = {
@@ -45,14 +47,6 @@ angular
 				isopen: false
 			}
 
-			# triggered on load document and if exist a user session on session storage
-			$rootScope.$on("initSessionEvent", ( event, currentSessionData, token ) ->
-				sessionData = {}
-				sessionData.user = currentSessionData
-				sessionData.token = token
-				initSession( sessionData )
-			)
-
 			# wrap user data to be storage in sessionStorage and windows
 			initSession = ( sessionData ) ->
 				#console.log "on restoreSession"
@@ -67,14 +61,19 @@ angular
 				delete $scope.user.password
 				# refresh user
 				window.bootstrappedUserObject 	= $scope.user
-				# save session after successfully login
-				sessionStorage.currentSession 	= angular.toJson($scope.user)
-				sessionStorage.token 			= sessionData.token
+
 				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
 				Restangular.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} })
 				console.log("token updated " + sessionStorage.token)
 
+			#######################################################
+			#
+			# Check session storage and session token
+			#
+			#######################################################
+			if AppUserFactory.currentUser?
+				initSession( AppUserFactory.currentUser )
 
 			$scope.authenticate = ( event ) ->
 				AuthenticatorSrvc.login($scope.user).then(
@@ -82,6 +81,9 @@ angular
 					( data ) ->
 						#console.log(data)
 						initSession( data )
+						# save session after successfully login
+						sessionStorage.currentSession 	= angular.toJson($scope.user)
+						sessionStorage.token 			= data.token
 
 					( error ) ->
 						console.log error
