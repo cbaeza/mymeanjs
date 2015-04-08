@@ -23,52 +23,54 @@
 		.navbar-form.navbar-right
 
 			//- Single button
-			div.btn-group( dropdown is-open="status.isopen" )
+			div( class="btn-group" dropdown is-open="status.isopen" )
 
-				button.btn.btn-primary {{user.email}}
-				button.btn.btn-primary.dropdown-toggle( type="button" dropdown-toggle ng-disabled="disabled" ng-click="toggleDropdown($event)" )
+				button( type="button"
+					class="btn btn-primary dropdown-toggle"
+					dropdown-toggle=""
+					ng-disabled="disabled"
+					aria-haspopup="true"
+					aria-expanded="true") {{user.email}}
 					span.caret
-					span.sr-only
 
 				ul.dropdown-menu( role="presentation" )
 
-					li( role="presentation" )
-						a( role="menuitem" href="/news" )
+					li
+						a( href="/news" )
 							span  {{ 'news' | translate }}
 
-					li( role="presentation" )
-						a( role="menuitem" href="/messages" )
+					li
+						a( href="/messages" )
 							span  {{ 'messages' | translate }}
-							//span.badge 42
 
 					li
 						.divider
 
-					li( role="presentation" )
-						a( role="menuitem" href="/controlpanel" )
+					li
+						a( href="/controlpanel" )
 							span  {{ 'control_panel' | translate }}
 
-					li( role="presentation" )
-						a( role="menuitem"  href="/myoffers" )
+					li
+						a( href="/myoffers" )
 							span  {{ 'my_offers' | translate }}
 
-					li( role="presentation" )
-						a( role="menuitem"  href="/profile/{{user._id}}"  )
+					li
+						a( href="/profile/{{user._id}}"  )
 							span  {{ 'profile' | translate }}
 
-					li( role="presentation" )
-						a( role="menuitem"  href="/account" )
+					li
+						a( href="/account" )
 							span {{ 'account_information' | translate }}
 
-					li( role="presentation" )
-						a( role="menuitem"  href="/favourites" )
+					li
+						a( href="/favourites" )
 							span {{ 'favourites' | translate }}
 
 					li
 						.divider
 
-					li( role="presentation" )
-						a( role="menuitem" href="/logout" ng-click="logout( $event )" )
+					li
+						a( href="/logout" ng-click="logout( $event )" )
 							span  {{ 'logout' | translate }}
 
 	ul.nav.navbar-nav.pull-left
