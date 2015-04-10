@@ -23,46 +23,8 @@
 
 
 		li.navbar-form( ng-show="user.isAuthenticated == true" )
-			//- Single button
-			div( class="btn-group" dropdown is-open="status.isopen" )
+			include menu
 
-				button( type="button"
-					class="btn btn-primary dropdown-toggle"
-					dropdown-toggle=""
-					ng-disabled="disabled"
-					aria-haspopup="true"
-					aria-expanded="true" ) {{user.email}}
-					span.caret
-
-				ul.dropdown-menu
-					li
-						a( href="/news" )
-							span  {{ 'news' | translate }}
-					li
-						.divider
-					li
-						a( href="/messages" )
-							span  {{ 'messages' | translate }}
-					li
-						a( href="/controlpanel" )
-							span  {{ 'control_panel' | translate }}
-					li
-						a( href="/myoffers" )
-							span  {{ 'my_offers' | translate }}
-					li
-						a( href="/profile/{{user._id}}"  )
-							span  {{ 'profile' | translate }}
-					li
-						a( href="/account" )
-							span {{ 'account_information' | translate }}
-					li
-						a( href="/favourites" )
-							span {{ 'favourites' | translate }}
-					li
-						.divider
-					li
-						a( href="/logout" ng-click="logout( $event )" )
-							span  {{ 'logout' | translate }}
 		li.navbar-form
 			include languages
 
