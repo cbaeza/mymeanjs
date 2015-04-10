@@ -1,0 +1,14 @@
+div.btn-group
+   div( class="btn-group" dropdown is-open="status.isLanguageOpen" )
+      button(
+         type="button"
+         class="btn btn-warning dropdown-toggle"
+         dropdown-toggle=""
+         ng-disabled="disabled"
+         aria-haspopup="true"
+         aria-expanded="true" ) {{ lang.text }}
+            span.caret
+
+      ul.dropdown-menu
+         li( ng-repeat="lang in providers.languages" )
+            a( ng-click="useLang(lang)" ) {{ lang.text }}

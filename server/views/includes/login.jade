@@ -1,27 +1,28 @@
 // LOGIN FORM
 .navbar-collapse.collapse( id="navbar" )
 
-	div( ng-show="user.isAuthenticated == false" )
+	ul( class="nav navbar-nav navbar-right")
 
-		form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
+		li( ng-show="user.isAuthenticated == false" )
+			form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
-			div.form-group.spacer
-				input.form-control( type="email" name="email"  placeholder="Email" ng-model="user.email" required )
+				div.form-group.spacer
+					input.form-control( type="email" name="email"  placeholder="Email" ng-model="user.email" required )
 
-			div.form-group.spacer
-				input.form-control( type="password" name="password" placeholder="Password" ng-model="user.password" required)
+				div.form-group.spacer
+					input.form-control( type="password" name="password" placeholder="Password" ng-model="user.password" required)
 
-			div.form-group.spacer
-				button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
-					span  {{ 'login' | translate }}
+				div.form-group.spacer
+					button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
+						span  {{ 'login' | translate }}
 
-			div.form-group
+		li( ng-show="user.isAuthenticated == false" )
+			div.navbar-form
 				button.btn.btn-primary( type="button" ng-click="register($event)" )
 					span  {{ 'register' | translate }}
 
-	div( ng-show="user.isAuthenticated == true" )
-		.navbar-form.navbar-right
 
+		li.navbar-form( ng-show="user.isAuthenticated == true" )
 			//- Single button
 			div( class="btn-group" dropdown is-open="status.isopen" )
 
@@ -30,67 +31,46 @@
 					dropdown-toggle=""
 					ng-disabled="disabled"
 					aria-haspopup="true"
-					aria-expanded="true") {{user.email}}
+					aria-expanded="true" ) {{user.email}}
 					span.caret
 
-				ul.dropdown-menu( role="presentation" )
-
+				ul.dropdown-menu
 					li
 						a( href="/news" )
 							span  {{ 'news' | translate }}
-
+					li
+						.divider
 					li
 						a( href="/messages" )
 							span  {{ 'messages' | translate }}
-
-					li
-						.divider
-
 					li
 						a( href="/controlpanel" )
 							span  {{ 'control_panel' | translate }}
-
 					li
 						a( href="/myoffers" )
 							span  {{ 'my_offers' | translate }}
-
 					li
 						a( href="/profile/{{user._id}}"  )
 							span  {{ 'profile' | translate }}
-
 					li
 						a( href="/account" )
 							span {{ 'account_information' | translate }}
-
 					li
 						a( href="/favourites" )
 							span {{ 'favourites' | translate }}
-
 					li
 						.divider
-
 					li
 						a( href="/logout" ng-click="logout( $event )" )
 							span  {{ 'logout' | translate }}
+		li.navbar-form
+			include languages
 
 	ul.nav.navbar-nav.pull-left
 		li
 			a.icon-btn( href="/about" )
-				//--i.fa.fa-users
 				span {{ 'about' | translate }}
-
 		li
 			a.icon-btn( href="/contact" )
-				//-- i.fa.fa-envelope
 				span {{ 'contact' | translate }}
 
-		li.dropdown(is-open="langDropDown")
-			a.icon-btn(dropdown-toggle)
-				//-- i.fa.fa-caret-down
-				span {{lang.text}}
-
-			ul.dropdown-menu
-				li( ng-repeat="lang in providers.languages" )
-					a.icon-btn(ng-click="useLang($event, lang)")
-						span.flag-icon( ng-class="getLangCss(lang.flag)" )
-						span {{ lang.text }} 

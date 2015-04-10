@@ -45,6 +45,7 @@ angular
 			# toogle flag to open/close menu
 			$scope.status = {
 				isopen: false
+				isLanguageOpen: false
 			}
 
 			# wrap user data to be storage in sessionStorage and windows
@@ -127,7 +128,6 @@ angular
 			#
 			#######################################################
 
-			# languages
 			$scope.providers = {
 				languages: [
 					{ key:"de_DE", flag:"de", text: "Deutsch", },
@@ -136,8 +136,10 @@ angular
 				]
 			}
 
-			# lang
-			$scope.langDropDown = false
+			$scope.status = {
+				isLanguageOpen: false
+			}
+
 			$scope.lang = $scope.providers.languages[1]
 
 			if( localStorage.NG_TRANSLATE_LANG_KEY? )  
@@ -149,21 +151,10 @@ angular
 						$scope.lang = lang
 				)
 
-
-			# menu for logged in user
-			$scope.toggleDropdown = (event) ->
-				event.preventDefault()
-				event.stopPropagation()
-				$scope.status.isopen = !$scope.status.isopen
-				
-			$scope.useLang = ( event, lang ) ->
+			$scope.useLang = ( lang ) ->
 				console.log( lang )
-				event.preventDefault()
-				event.stopPropagation()
-
 				$translate.use( lang.key )
 				$cookies.lang = lang.key
-				$scope.langDropDown = false
 				$scope.lang = lang
 
 			$scope.getLangCss = ( lang ) ->
