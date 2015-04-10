@@ -1,0 +1,27 @@
+.navbar-collapse.collapse( id="navbar" )
+
+	ul.nav.navbar-nav.navbar-right
+
+		li( ng-show="user.isAuthenticated == false" )
+			include login
+
+		li( ng-show="user.isAuthenticated == false" )
+			div.navbar-form
+				button.btn.btn-primary( type="button" ng-click="register($event)" )
+					span  {{ 'register' | translate }}
+
+
+		li.navbar-form( ng-show="user.isAuthenticated == true" )
+			include menu
+
+		li.navbar-form
+			include languages
+
+	ul.nav.navbar-nav.pull-left
+		li
+			a.icon-btn( href="/about" )
+				span {{ 'about' | translate }}
+		li
+			a.icon-btn( href="/contact" )
+				span {{ 'contact' | translate }}
+

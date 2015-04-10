@@ -1,38 +1,11 @@
-// LOGIN FORM
-.navbar-collapse.collapse( id="navbar" )
+form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
 
-	ul( class="nav navbar-nav navbar-right")
+   div.form-group.spacer
+      input.form-control( type="email" name="email"  placeholder="Email" ng-model="user.email" required )
 
-		li( ng-show="user.isAuthenticated == false" )
-			form.navbar-form.navbar-right( name="loginForm" role="form" novalidate )
+   div.form-group.spacer
+      input.form-control( type="password" name="password" placeholder="Password" ng-model="user.password" required)
 
-				div.form-group.spacer
-					input.form-control( type="email" name="email"  placeholder="Email" ng-model="user.email" required )
-
-				div.form-group.spacer
-					input.form-control( type="password" name="password" placeholder="Password" ng-model="user.password" required)
-
-				div.form-group.spacer
-					button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
-						span  {{ 'login' | translate }}
-
-		li( ng-show="user.isAuthenticated == false" )
-			div.navbar-form
-				button.btn.btn-primary( type="button" ng-click="register($event)" )
-					span  {{ 'register' | translate }}
-
-
-		li.navbar-form( ng-show="user.isAuthenticated == true" )
-			include menu
-
-		li.navbar-form
-			include languages
-
-	ul.nav.navbar-nav.pull-left
-		li
-			a.icon-btn( href="/about" )
-				span {{ 'about' | translate }}
-		li
-			a.icon-btn( href="/contact" )
-				span {{ 'contact' | translate }}
-
+   div.form-group.spacer
+      button.btn.btn-success( type="submit" ng-disabled="loginForm.$invalid && !loginForm.email.$valid" ng-click="authenticate($event)")
+         span  {{ 'login' | translate }}
