@@ -14,11 +14,14 @@ angular
 		'$translate'
 		'Restangular'
 		'AppUserFactory'
+		'SystemMessages'
 
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate, Restangular, AppUserFactory) ->
+		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate,
+			Restangular, AppUserFactory, SystemMessages) ->
 
-			console.log('MainClientController init')
-			console.log(AppUserFactory.currentUser)
+			SystemMessages.success('App started')
+			# console.log('MainClientController init')
+			# console.log(AppUserFactory.currentUser)
 
 			# system messages in header
 			$scope.system = {

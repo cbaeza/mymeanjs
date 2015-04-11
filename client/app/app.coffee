@@ -8,6 +8,7 @@ angular
 		'angular-md5'
 		'ngCookies'
 		'pascalprecht.translate'
+		'ngToast'
 
 		# local modules
 		# 'app.header' # Deprecated, bad idea !, delegate all in MainController
