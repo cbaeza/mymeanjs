@@ -82,11 +82,11 @@ angular
 				AuthenticatorSrvc.login($scope.user).then(
 
 					( data ) ->
-						#console.log(data)
+						# console.log(data)
+						sessionStorage.token = data.token
 						initSession( data )
 						# save session after successfully login
 						sessionStorage.currentSession 	= angular.toJson($scope.user)
-						sessionStorage.token 			= data.token
 						SystemMessages.info('Logged in as ' + $scope.user.email )
 
 					( error ) ->
