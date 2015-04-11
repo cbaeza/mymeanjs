@@ -140,6 +140,7 @@ angular
 				isLanguageOpen: false
 			}
 
+			# default lang if not found previous selected lang in local storage
 			$scope.lang = $scope.providers.languages[1]
 
 			if( localStorage.NG_TRANSLATE_LANG_KEY? )  
