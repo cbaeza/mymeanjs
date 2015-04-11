@@ -19,7 +19,6 @@ angular
 		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate,
 			Restangular, AppUserFactory, SystemMessages) ->
 
-			SystemMessages.success('App started')
 			# console.log('MainClientController init')
 			# console.log(AppUserFactory.currentUser)
 
@@ -88,12 +87,11 @@ angular
 						# save session after successfully login
 						sessionStorage.currentSession 	= angular.toJson($scope.user)
 						sessionStorage.token 			= data.token
+						SystemMessages.info('Logged in as ' + $scope.user.email )
 
 					( error ) ->
-						console.log error
-						if( error? )
-							console.log 'error'
-							$scope.system.message = error.data.error
+						SystemMessages.danger(error.data.error)
+						$scope.system.message = ''
 				)
 
 			$scope.logout = ( event ) ->
