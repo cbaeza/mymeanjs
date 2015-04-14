@@ -6,25 +6,25 @@ angular
 
 			@success = ( msg ) ->
 				ngToast.create({
-					className: 'success',
+					className: 'success'
 					content: msg
 				})
 
 			@info = ( msg ) ->
 				ngToast.create({
-					className: 'info',
+					className: 'info'
 					content: msg
 				})
 
 			@warning = ( msg ) ->
 				ngToast.create({
-					className: 'warning',
+					className: 'warning'
 					content: msg
 				})
 
 			@danger = ( msg ) ->
 				ngToast.create({
-					className: 'danger',
+					className: 'danger'
 					content: msg
 				})
 

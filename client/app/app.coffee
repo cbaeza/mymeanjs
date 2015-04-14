@@ -87,7 +87,7 @@ angular
 						redirectTo: '/'
 
 				$lp.html5Mode({
-					enabled: true,
+					enabled: true
 					requireBase: true
 				})
 
@@ -117,8 +117,8 @@ angular
 
 				# toast
 				ngToast.configure({
-					verticalPosition: 'top',
-					horizontalPosition: 'right',
+					verticalPosition: 'top'
+					horizontalPosition: 'right'
 					animation: 'fade'
 					dismissButton: true
 					maxNumber: 3
