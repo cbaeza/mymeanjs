@@ -30,7 +30,8 @@ angular
 			'$locationProvider'
 			'RestangularProvider'
 			'$translateProvider'
-			( $rp, $lp, RestangularProvider, $translateProvider ) ->
+			'ngToastProvider'
+			( $rp, $lp, RestangularProvider, $translateProvider, ngToast ) ->
 
 				$rp
 					.when '/',
@@ -113,6 +114,15 @@ angular
 				$translateProvider.fallbackLanguage('en_GB')
 				$translateProvider.usePostCompiling(true)
 				$translateProvider.useLocalStorage()
+
+				# toast
+				ngToast.configure({
+					verticalPosition: 'top',
+					horizontalPosition: 'right',
+					animation: 'fade'
+					dismissButton: true
+					maxNumber: 3
+				})
 
 		]).run(
 			( $rootScope ) ->
