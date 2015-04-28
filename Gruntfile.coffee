@@ -19,7 +19,7 @@ module.exports = (grunt) ->
 			options:
 				bare: true
 				join: false
-				sourceMap: false
+				sourceMap: true
 
 			server:
 				expand: true

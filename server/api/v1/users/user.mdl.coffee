@@ -32,12 +32,16 @@ _schema = new mongoose.Schema(
 		type: Boolean
 		require: true
 
+	roles:
+		type:Array
+		required:true
+
 	creationDate:
 		type: Date
 		default: Date.now()
 )
 
-_fields = '_id name lastname email token verified creationDate'
+_fields = '_id name lastname email token verified roles creationDate'
 
 _schema.methods =
 

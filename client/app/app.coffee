@@ -3,6 +3,7 @@ angular
 
 		# external modules
 		'ngRoute'
+		'ngResource'
 		'ui.bootstrap'
 		'restangular'
 		'angular-md5'
@@ -33,6 +34,19 @@ angular
 			'ngToastProvider'
 			( $rp, $lp, RestangularProvider, $translateProvider, ngToast ) ->
 
+				routeRoleChecks = {
+					admin:{
+						auth:
+							(AppUserFactory) ->
+								AppUserFactory.isAuthorized('admin')
+					}
+					authenticated_user: {
+						auth:
+							(AppUserFactory) ->
+								AppUserFactory.isAuthorized('authenticated_user')
+					}
+				}
+
 				$rp
 					.when '/',
 						templateUrl: '/partials/app/modules/home/home.html'
@@ -41,39 +55,48 @@ angular
 					.when '/news',
 						templateUrl: '/partials/app/modules/news/news.html'
 						controller: 'NewsCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
 						controller: 'MessagesCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/controlpanel',
 						templateUrl: '/partials/app/modules/controlpanel/controlpanel.html'
 						controller: 'ControlpanelCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/myoffers',
 						templateUrl: '/partials/app/modules/myoffers/myoffers.html'
 						controller: 'MyOffersCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/profile/:id/',
 						templateUrl: '/partials/app/modules/profiles/profile.html'
 						controller: 'ProfilesCtrl'
-						resolve:
+						resolve: {
+							roles: ()->
+								routeRoleChecks.authenticated_user
+
 							userProfile: [
 								'$route'
 								'ProfilesSrvc'
 								($route, ProfilesSrvc) ->
 									console.log("resolving : " + $route.current.params.id)
-									return ProfilesSrvc.getProfile( $route.current.params.id )
+									return ProfilesSrvc.getProfile($route.current.params.id)
 							]
-
+						}
 
 					.when '/account',
 						templateUrl: '/partials/app/modules/account/account.html'
 						controller: 'AccountCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/favourites',
 						templateUrl: '/partials/app/modules/favourites/favourites.html'
 						controller: 'FavouritesCtrl'
+						resolve: routeRoleChecks.authenticated_user
 
 					.when '/about',
 						templateUrl: '/partials/app/modules/about/about.html'
@@ -99,12 +122,13 @@ angular
 				# add interceptor to set auth JWT token if exists
 				#RestangularProvider.addFullRequestInterceptor( ( headers, params, element, httpConfig, $window ) ->
 				#	console.log($window.sessionStorage)
-				#	if $window.sessionStorage? and $window.sessionStorage.token?
-				#		headers.Authorization = 'Bearer ' + $window.sessionStorage.token
+				#	if $window.sessionStorage? and $window.sessionStorage.user.token?
+				#		headers.Authorization = 'Bearer ' + $window.sessionStorage.user.token
 				#		return headers
 				#)
 
-				RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} });
+				if sessionStorage.user?
+					RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.user.token || {} });
 
 				# angular-translate
 				# determine autimatically language via content-negotiation
@@ -125,6 +149,10 @@ angular
 				})
 
 		]).run(
-			( $rootScope ) ->
-
+			( $rootScope, $location, SystemMessages ) ->
+				$rootScope.$on('$routeChangeError', (evt, current, previous, rejection) ->
+					if rejection is 'not authorized'
+						SystemMessages.warning('not authorized')
+						return $location.path('/')
+				)
 	)

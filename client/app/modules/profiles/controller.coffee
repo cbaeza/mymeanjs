@@ -7,12 +7,6 @@ angular
 		'userProfile'
 		( $scope, location, profilesSrvc, userProfile ) ->
 
-			# check authenticate user
-			#console.log(window.bootstrappedUserObject)
-			if not window.bootstrappedUserObject?
-				location.path('/')
-
-
 			console.log 'ProfilesCtrl init'
 			console.log(userProfile)
 

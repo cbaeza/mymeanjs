@@ -15,9 +15,11 @@ angular
 		'Restangular'
 		'AppUserFactory'
 		'SystemMessages'
+		'$window'
+		'SessionMgmt'
 
 		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate,
-			Restangular, AppUserFactory, SystemMessages) ->
+			Restangular, AppUserFactory, SystemMessages, $window, SessionMgmt) ->
 
 			# console.log('MainClientController init')
 			# console.log(AppUserFactory.currentUser)
@@ -41,7 +43,9 @@ angular
 				email: null
 				password: null
 				lastLogin: null
+				roles:null
 				isAuthenticated: false
+				token: null
 			}
 
 			# toogle flag to open/close menu
@@ -50,44 +54,24 @@ angular
 				isLanguageOpen: false
 			}
 
-			# wrap user data to be storage in sessionStorage and windows
-			initSession = ( sessionData ) ->
-				#console.log "on restoreSession"
-				#console.log sessionData.user
-				#console.log sessionData.token
-				$scope.user._id             = sessionData.user._id
-				$scope.user.name            = sessionData.user.name
-				$scope.user.lastname        = sessionData.user.lastname
-				$scope.user.email           = sessionData.user.email
-				$scope.user.isAuthenticated = true
-				$scope.user.lastLogin       = new Date()
-				delete $scope.user.password
-				# refresh user
-				window.bootstrappedUserObject 	= $scope.user
-
-				$scope.system.message 			= "{ #{$scope.user.name} #{$scope.user.lastname} }"
-
-				Restangular.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.token || {} })
-				console.log("token updated " + sessionStorage.token)
-
-			#######################################################
-			#
-			# Check session storage and session token
-			#
-			#######################################################
+    		# remember me, currently based on session storage
 			if AppUserFactory.currentUser?
-				initSession( AppUserFactory.currentUser )
+				console.log('Restoring session !')
+				SessionMgmt.rememberMe()
+				$scope.user = SessionMgmt.user
 
 			$scope.authenticate = ( event ) ->
 				AuthenticatorSrvc.login($scope.user).then(
 
 					( data ) ->
-						# console.log(data)
-						sessionStorage.token = data.token
-						initSession( data )
-						# save session after successfully login
-						sessionStorage.currentSession 	= angular.toJson($scope.user)
+						SessionMgmt.initSession( data )
+						$scope.user = SessionMgmt.user
+						console.log $scope.user
+						$scope.system.message = "{ #{$scope.user.name} #{$scope.user.lastname} }"
+
+						delete $scope.user.password
 						SystemMessages.info('Logged in as ' + $scope.user.email )
+						#console.log("token updated " + $scope.user.token)
 
 					( error ) ->
 						SystemMessages.danger(error.data.error)
@@ -98,10 +82,8 @@ angular
 				AuthenticatorSrvc.logout($scope.user).then (
 					( data ) ->
 						console.log data
+						SessionMgmt.destroySession()
 						$scope.user.isAuthenticated = false
-						window.bootstrappedUserObject = null
-						delete sessionStorage.currentSession
-						delete sessionStorage.token
 						$scope.system.message = ""
 						location.path('/')
 				)

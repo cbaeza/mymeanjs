@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server/server.coffee",
+    "debug": "coffee --nodejs --debug server/server.coffee",
     "test": "test-app"
   },
   "repository": {

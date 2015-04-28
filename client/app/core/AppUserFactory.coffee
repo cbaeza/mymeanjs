@@ -3,20 +3,30 @@ angular
 	.factory( 'AppUserFactory', [
 		'$rootScope'
 		'$window'
-		( $rootScope, $window ) ->
+		'$q'
+		( $rootScope, $window, $q ) ->
 
-			currentUser = undefined
-			token = undefined
+			c = @
+			c.currentUser = null
 
-			if sessionStorage.token? and sessionStorage.currentSession?
-				currentUser = {}
-				currentUser.user = angular.fromJson(sessionStorage.currentSession)
-				token = sessionStorage.token
+			if $window.bootstrappedUserObject?
+				c.currentUser = angular.fromJson($window.bootstrappedUserObject)
+
+			else
+				# remember me
+				if sessionStorage.currentSession?
+					c.currentUser = angular.fromJson(sessionStorage.currentSession)
 
 
 			return {
-				currentUser: currentUser
-				token: token
-				isAuthenticated: -> return currentUser?
+				currentUser: c.currentUser
+				token: c.currentUser?.token
+				isAuthenticated: -> return c.currentUser?
+				isAuthorized: ( role ) ->
+					console.log('isAuthorized: ' + c.currentUser)
+					if c.currentUser? && c.currentUser.roles.indexOf(role) > -1
+						return true
+					else
+						return $q.reject('not authorized')
 			}
 	])

@@ -6,14 +6,14 @@ angular
 		( $scope, homeSrvc ) ->
 
 			$scope.buttonMessage = "Go"
-			$scope.status = "ready to go from HomeCtrl controller!"
+			$scope.status = "subtitle!"
 
 			$scope.interval = 5000
 			$scope.slides = []
 
 			$scope.addSlide = (i) ->
 				#console.log "add slide " + i
-				newWidth = 600 + i + 1
+				newWidth = 1024 + i + 1
 				$scope.slides.push({
 						image: 'http://placekitten.com/' + newWidth + '/300',
 						text : ['More','Extra','Lots of','Surplus'][$scope.slides.length % 4] + ' ' + ['Cats', 'Kittys', 'Felines', 'Cutes'][$scope.slides.length % 4]
