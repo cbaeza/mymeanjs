@@ -19,7 +19,7 @@ angular
 				c.user.isAuthenticated = true
 				c.user.token		   = data.user.token || data.token
 
-				angular.extend(c.user, $window.bootstrappedUserObject);
+				$window.bootstrappedUserObject = c.user
 
 				sessionStorage.currentSession = angular.toJson(c.user)
 

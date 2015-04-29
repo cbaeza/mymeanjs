@@ -46,6 +46,7 @@ module.exports =
 		user.token = uuid.v1()
 		user.verified = false
 		user.password = md5(user.password)
+		user.roles = ['authenticated_user']
 		console.log user
 
 		user.save( ( error ) ->
