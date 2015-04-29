@@ -9,14 +9,9 @@ angular
 			c = @
 			c.currentUser = null
 
-			if $window.bootstrappedUserObject?
-				c.currentUser = angular.fromJson($window.bootstrappedUserObject)
-
-			else
-				# remember me
-				if sessionStorage.currentSession?
-					c.currentUser = angular.fromJson(sessionStorage.currentSession)
-
+			# remember me
+			if sessionStorage.currentSession?
+				c.currentUser = angular.fromJson(sessionStorage.currentSession)
 
 			return {
 				currentUser: c.currentUser

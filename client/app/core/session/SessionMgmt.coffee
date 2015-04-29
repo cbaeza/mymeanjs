@@ -19,8 +19,6 @@ angular
 				c.user.isAuthenticated = true
 				c.user.token		   = data.user.token || data.token
 
-				$window.bootstrappedUserObject = c.user
-
 				sessionStorage.currentSession = angular.toJson(c.user)
 
 				AppUserFactory.currentUser = angular.fromJson(sessionStorage.currentSession)
@@ -35,7 +33,6 @@ angular
 			@destroySession = ( ) ->
 				console.log 'destroy session'
 				c.user = {}
-				$window.bootstrappedUserObject = null
 				delete sessionStorage.currentSession
 
 			@rememberMe = ( ) ->

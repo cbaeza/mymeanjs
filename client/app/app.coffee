@@ -52,6 +52,15 @@ angular
 						templateUrl: '/partials/app/modules/home/home.html'
 						controller: 'HomeCtrl'
 
+					.when '/about',
+						templateUrl: '/partials/app/modules/about/about.html'
+						controller: 'AboutCtrl'
+
+					.when '/contact',
+						templateUrl: '/partials/app/modules/contact/contact.html'
+						controller: 'ContactCtrl'
+
+					# logged in user routes
 					.when '/news',
 						templateUrl: '/partials/app/modules/news/news.html'
 						controller: 'NewsCtrl'
@@ -97,14 +106,6 @@ angular
 						templateUrl: '/partials/app/modules/favourites/favourites.html'
 						controller: 'FavouritesCtrl'
 						resolve: routeRoleChecks.authenticated_user
-
-					.when '/about',
-						templateUrl: '/partials/app/modules/about/about.html'
-						controller: 'AboutCtrl'
-
-					.when '/contact',
-						templateUrl: '/partials/app/modules/contact/contact.html'
-						controller: 'ContactCtrl'
 
 					.otherwise
 						redirectTo: '/'
