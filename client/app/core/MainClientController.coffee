@@ -59,6 +59,7 @@ angular
 				console.log('Restoring session !')
 				SessionMgmt.rememberMe()
 				$scope.user = SessionMgmt.user
+				$scope.system.message = "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
 			$scope.authenticate = ( event ) ->
 				AuthenticatorSrvc.login($scope.user).then(
