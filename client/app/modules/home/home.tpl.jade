@@ -1,37 +1,28 @@
-div.jumbotron
-	div.container
-		
-		h1 Home
-		p "status: " {{status}}
+div.container
 
-		div.row
-			div.col-md-12.show-grid
-				div( style="height: 350px" )
-					carousel( interval="interval" )
-						slide( ng-repeat="slide in slides" active="slide.active" )
-							img.img-responsive.center-block(
-								ng-src="{{slide.image}}" )
-							div( class="carousel-caption" )
-								h4 Slide {{$index}}
-								p {{slide.text}}
-
-		//-- div.btn-group
-			label( class="btn btn-success" ng-model="radioModel" btn-radio="'Left'" uncheckable ) {{ buttonMessage }}
+	h2 Deutsch-Spanische Elterninitiativ KiTa
+	h3 Jardín infantil bilingüe (español-alemán)
+	section.container-fluid
+		carousel( interval="interval" )
+			slide( ng-repeat="slide in slides" active="slide.active" )
+				img.img-responsive.center-block( ng-src="{{slide.image}}" )
+				div( class="carousel-caption" )
+					p {{slide.text}}
 
 div.container
 	div.row
 		div.col-md-4
-			h2 Heading
-			p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+			h2 Betreuung
+			p Gruppen Insgesamt stehen in unserer Einrichtung 32 Plätze zur Verfügung. Die Kinder werden in zwei altersgemischten halboffenen Gruppen (18 Monate bis Schuleintritt) mit jeweils 16 Kindern von je einer/m deutschsprachigen und einer/m spanischsprachigen Erzieher/in (jeweils Muttersprachler) betreut. Öffnungszeiten/Tagesablauf Die Kita
 			p
 				a( class="btn btn-default" href="#" role="button" ) View details &raquo;
 		div.col-md-4
-			h2 Heading
-			p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+			h2 Elternarbeit
+			p Verein „Los Treinta Lobitos“ ist eine Elterninitiativ-Kindertagesstätte (EIKita), d. h. sie funktioniert wie ein normaler städtischer Kindergarten, wird jedoch von den Eltern selbst organisiert. Alle Eltern sind Mitglied im gleichnamigen Trägerverein. Alle relevanten Themen werden in Vollversammlungen diskutiert und beschlossen.
 			p
 				a( class="btn btn-default" href="#" role="button" ) View details &raquo;
 		div.col-md-4
-			h2 Heading
-			p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+			h2 Team
+			p Unser Team Unser Erzieherteam besteht momentan aus 6 Erziehern, davon arbeiten 5 Voll- und 1 Teilzeit. Alle Erzieher haben eine staatlich anerkannte Erzieherausbildung absolviert bzw. kommen aus anderen beruflichen Bereichen und absolvieren gerade die Ausbildung. Dazu haben alle sehr unterschiedliche kulturelle
 			p
 				a( class="btn btn-default" href="#" role="button" ) View details &raquo;
