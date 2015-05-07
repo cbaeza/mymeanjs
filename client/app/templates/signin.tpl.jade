@@ -1,0 +1,28 @@
+div( ng-controller="SignInModalCtrl" )
+
+	.modal-body
+		.view
+			form.form-signin( role="form" name="registerForm" novalidate ng-submit="doRegister()")
+
+				h2.form-signin-heading Please sign in
+				
+				label.sr-only( for="inputEmail" ) Email address
+				input.form-control( 
+					type="email" 
+					id="inputEmail" 
+					ng-model="credentials.email"
+					placeholder="Email address" required autofocus)
+
+				label.sr-only( for="inputPassword" ) Password
+				input.form-control( 
+					type="password" 
+					id="inputPassword" 
+					ng-model="credentials.password"
+					placeholder="Password" required )
+				
+				div.checkbox
+					label 
+						input( id="rememberMe" type="checkbox" value="remember-me" ng-model="credentials.rememberMe") 
+						| Remember me
+				
+				button.btn.btn-lg.btn-primary.btn-block( type="submit" ng-click="authenticate($event)" ) Sign in

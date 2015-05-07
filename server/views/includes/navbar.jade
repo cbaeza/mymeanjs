@@ -2,14 +2,9 @@
 
 	ul.nav.navbar-nav.navbar-right
 
-		li( ng-show="user.isAuthenticated == false" )
-			include login
-
-		li( ng-show="user.isAuthenticated == false" )
-			div.navbar-form
-				button.btn.btn-primary( type="button" ng-click="register($event)" )
-					span  {{ 'register' | translate }}
-
+		li.navbar-form( ng-show="user.isAuthenticated == false")
+			button.btn.btn-primary( ng-click="openSignInDialog($event)")
+				span.glyphicon.glyphicon-hand-right {{system.message}}
 
 		li.navbar-form( ng-show="user.isAuthenticated == true" )
 			include menu

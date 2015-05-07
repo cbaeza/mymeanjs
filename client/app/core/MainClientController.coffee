@@ -54,30 +54,24 @@ angular
 				isLanguageOpen: false
 			}
 
-    		# remember me, currently based on session storage
+			# remember me, currently based on session storage
 			if AppUserFactory.currentUser?
 				console.log('Restoring session !')
 				SessionMgmt.rememberMe()
 				$scope.user = SessionMgmt.user
 				$scope.system.message = "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
-			$scope.authenticate = ( event ) ->
-				AuthenticatorSrvc.login($scope.user).then(
+			# init user data after success sign in	
+			$scope.$on('signInEvent', ( event, data) ->
+				console.log  'onSigIn'
+				#console.log  data
+				$scope.user = SessionMgmt.user
+				console.log $scope.user
+				$scope.system.message = "{ #{$scope.user.name} #{$scope.user.lastname} }"
 
-					( data ) ->
-						SessionMgmt.initSession( data )
-						$scope.user = SessionMgmt.user
-						console.log $scope.user
-						$scope.system.message = "{ #{$scope.user.name} #{$scope.user.lastname} }"
-
-						delete $scope.user.password
-						SystemMessages.info('Logged in as ' + $scope.user.email )
-						#console.log("token updated " + $scope.user.token)
-
-					( error ) ->
-						SystemMessages.danger(error.data.error)
-						$scope.system.message = ''
-				)
+				delete $scope.user.password
+				SystemMessages.info('Logged in as ' + $scope.user.email )
+			)
 
 			$scope.logout = ( event ) ->
 				AuthenticatorSrvc.logout($scope.user).then (
@@ -105,6 +99,21 @@ angular
 				}).result.then (data) ->
 					console.log data
 
+			#######################################################
+			#
+			# Sign in
+			#
+			#######################################################
+			$scope.openSignInDialog = ( event ) ->
+				console.log( 'sign in')
+				event.preventDefault()
+				event.stopPropagation()
+				$modal.open({
+					controller: 'SignInModalCtrl'
+					templateUrl: '/partials/app/templates/signin.html'
+
+				}).result.then (data) ->
+					console.log data
 
 			#######################################################
 			#
