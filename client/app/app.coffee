@@ -128,8 +128,8 @@ angular
 				#		return headers
 				#)
 
-				if sessionStorage.user?
-					RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.user.token || {} });
+				if sessionStorage.currentSession?
+					RestangularProvider.setDefaultHeaders( { Authorization:  'Bearer ' + sessionStorage.currentSession.token || {} });
 
 				# angular-translate
 				# determine autimatically language via content-negotiation

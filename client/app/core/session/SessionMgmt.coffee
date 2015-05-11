@@ -2,9 +2,8 @@ angular
 	.module('mymeanjs')
 	.service( 'SessionMgmt', [
 		'$window'
-		'AppUserFactory'
 		'Restangular'
-		( $window, AppUserFactory, Restangular ) ->
+		( $window, Restangular ) ->
 
 			c = @
 			c.user = {}
@@ -22,8 +21,6 @@ angular
 				if rememberMe is true
 					sessionStorage.currentSession = angular.toJson(c.user)
 					
-				AppUserFactory.currentUser = angular.fromJson(angular.toJson(c.user))
-
 				# update rest angular auth header
 				Restangular.setDefaultHeaders( { Authorization:  'Bearer ' + c.user.token || {} })
 

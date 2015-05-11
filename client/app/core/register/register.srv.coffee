@@ -1,4 +1,5 @@
 angular
+angular
 	.module('mymeanjs')
 	.service( 'RegisterSrvc', [
 		'Restangular'
