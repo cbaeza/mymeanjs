@@ -16,14 +16,26 @@ nav.navbar.navbar-inverse.navbar-fixed-top(role="navigation")
 					a.icon-btn( href="/about" )
 						span {{ 'about' | translate }}
 				li
+					a.icon-btn( href="/care" )
+						span {{ 'care' | translate }}
+				li
+					a.icon-btn( href="/team" )
+						span {{ 'team' | translate }}
+				li
+					a.icon-btn( href="/parent" )
+						span {{ 'parent' | translate }}
+				li
+					a.icon-btn( href="/dependencies" )
+						span {{ 'dependencies' | translate }}		
+				li
 					a.icon-btn( href="/contact" )
 						span {{ 'contact' | translate }}
 
 			ul.nav.navbar-nav.navbar-right
 
 				li.navbar-form( ng-show="user.isAuthenticated == false")
-					button.btn.btn-primary( ng-click="register($event)")
-						span Register
+					button.btn.btn-primary( ng-click="signUp($event)")
+						span {{ 'signup' | translate }}
 
 				li.navbar-form( ng-show="user.isAuthenticated == false" )
 					button.btn.btn-primary( ng-click="openSignInDialog($event)")

@@ -88,8 +88,8 @@ angular
 			# Register
 			#
 			#######################################################
-			$scope.register = ( event ) ->
-				console.log( 'register')
+			$scope.signUp = ( event ) ->
+				console.log( 'signUp')
 				event.preventDefault()
 				event.stopPropagation()
 				$modal.open({
