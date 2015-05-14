@@ -1,3 +1,32 @@
+.navbar-lobitos {
+  background-color: #e53e50;
+  border-color: #E53E57;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #e53e50;
+}
+/* visited link */
+a:visited {
+    color: #fff;
+}
+ /* mouse over link */
+a:hover {
+    color: #e53e50;
+}
+/* selected link */
+a:active {
+    color: #e53e50;
+}
+
+.btn-red {
+  color: #fff;
+  background-color: #e53e50;
+  border-color: #fff;
+}
+
 body {
 	height: 100%;
 	padding-top: 50px;
