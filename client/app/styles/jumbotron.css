@@ -6,19 +6,21 @@
 a {
   color: #fff;
   text-decoration: none;
-  background-color: #e53e50;
 }
 /* visited link */
 a:visited {
     color: #fff;
+    background-color: #e53e50;
 }
  /* mouse over link */
 a:hover {
     color: #e53e50;
+    background-color: #e53e50;
 }
 /* selected link */
 a:active {
     color: #e53e50;
+    background-color: #e53e50;
 }
 
 .btn-red {
