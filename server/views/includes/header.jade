@@ -7,28 +7,28 @@ nav.navbar.navbar-lobitos.navbar-fixed-top(role="navigation")
 				span.icon-bar 
 				span.icon-bar
 				span.icon-bar
-			a.navbar-brand( href="/" ) 30 Lobitos
+			a.navbar-brand.logo( href="/" ) 30 Lobitos
 
 		div.navbar-collapse.collapse( id="navbar" )
 
 			ul.nav.navbar-nav.pull-left
 				li
-					a.icon-btn( href="/about" )
+					a( href="/about" ng-class="{ active: isActive('/about') }" )
 						span {{ 'about' | translate }}
 				li
-					a.icon-btn( href="/care" )
+					a( href="/care" ng-class="{ active: isActive('/care') }")
 						span {{ 'care' | translate }}
 				li
-					a.icon-btn( href="/team" )
+					a( href="/team" ng-class="{ active: isActive('/team') }")
 						span {{ 'team' | translate }}
 				li
-					a.icon-btn( href="/parent" )
+					a( href="/parent" ng-class="{ active: isActive('/parent') }")
 						span {{ 'parent' | translate }}
 				li
-					a.icon-btn( href="/dependencies" )
+					a( href="/dependencies" ng-class="{ active: isActive('/dependencies') }")
 						span {{ 'dependencies' | translate }}		
 				li
-					a.icon-btn( href="/contact" )
+					a( href="/contact" ng-class="{ active: isActive('/contact') }")
 						span {{ 'contact' | translate }}
 
 			ul.nav.navbar-nav.navbar-right

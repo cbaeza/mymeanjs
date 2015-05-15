@@ -18,7 +18,7 @@ angular
 		'$window'
 		'SessionMgmt'
 
-		( $scope, location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate,
+		( $scope, $location, $modal, AuthenticatorSrvc, $rootScope, $cookies, $translate,
 			Restangular, AppUserFactory, SystemMessages, $window, SessionMgmt) ->
 
 			# console.log('MainClientController init')
@@ -28,6 +28,15 @@ angular
 			$scope.system = {
 				message : ''
 			}
+
+			#######################################################
+			#
+			# Navbar
+			#
+			#######################################################
+			$scope.isActive = ( routeLocation ) ->
+				return routeLocation is $location.path()
+
 
 			#######################################################
 			#
@@ -80,7 +89,7 @@ angular
 						SessionMgmt.destroySession()
 						$scope.user.isAuthenticated = false
 						$scope.system.message = ""
-						location.path('/')
+						$location.path('/')
 				)
 
 			#######################################################

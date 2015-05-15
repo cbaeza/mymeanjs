@@ -3,30 +3,49 @@
   border-color: #E53E57;
 }
 
-a {
+.navbar a {
   color: #fff;
   text-decoration: none;
 }
 /* visited link */
-a:visited {
+nav a:visited
+a:focus {
     color: #fff;
     background-color: #e53e50;
 }
  /* mouse over link */
-a:hover {
+nav a:hover,
+a:focus {
     color: #e53e50;
 }
 /* selected link */
-a:active {
+nav a:active {
     color: #e53e50;
     background-color: #e53e50;
 }
 
+.navbar a.active {
+   color: #e53e50;
+   background-color: #e53e50;
+}
+
+.logo, 
+.logo:hover,
+.logo:active,
+.logo:focus,
+.logo:visited{
+  color: #fff;
+  background-color: #e53e50;
+}
+
+/* BUTTON */ 
 .btn-red {
   color: #fff;
   background-color: #e53e50;
   border-color: #fff;
 }
+
+/* BODY */
 
 body {
 	height: 100%;
