@@ -56,11 +56,11 @@ div( ng-controller="RegisterModalCtrl" )
 							span Passwords don't match
 
 				.modal-footer
-					button.btn.btn-primary( type="button" ng-click="doRegister($event)"
+					button.btn.btn-red-white( type="button" ng-click="doRegister($event)"
 						ng-disabled="registerForm.$invalid && !registerForm.email.$valid")
 						span Register
 
-					button.btn.btn-warning( type="button" ng-click="close($event)" )
+					button.btn.btn-red-white( type="button" ng-click="close($event)" )
 						span Cancel
 
 		.view
@@ -70,5 +70,5 @@ div( ng-controller="RegisterModalCtrl" )
 				p If no email is comming, please check your spam directory or contact us to bla@bla.de.
 
 				.modal-footer
-					button.btn.btn-success( type="button" ng-click="close($event)" )
+					button.btn.btn-red-white( type="button" ng-click="close($event)" )
 						span Close

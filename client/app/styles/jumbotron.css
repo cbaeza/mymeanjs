@@ -39,12 +39,19 @@ nav a:active {
   background-color: #e53e50;
 }
 
-/* BUTTON */ 
+/* BUTTONS */ 
 .btn-red {
   color: #fff;
   background-color: #e53e50;
   border-color: #fff;
 }
+
+.btn-red-white {
+  color: #e53e50;
+  background-color: #fff;
+  border-color: #e53e50;
+}
+
 
 /* BODY */
 
@@ -59,6 +66,7 @@ body {
 	/*opacity: 0.5;*/
 }
 
+/* UTILS */
 .spacer{
 	padding-right: 3px;
 }
