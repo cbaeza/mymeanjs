@@ -24,6 +24,10 @@ angular
 		'module.account'
 		'module.favourites'
 		'module.about'
+		'module.care'
+		'module.team'
+		'module.parentswork'
+		'module.dependencies'
 		'module.contact'
 
 		]).config([
@@ -55,6 +59,22 @@ angular
 					.when '/about',
 						templateUrl: '/partials/app/modules/about/about.html'
 						controller: 'AboutCtrl'
+
+					.when '/care',
+						templateUrl: '/partials/app/modules/care/care.html'
+						controller: 'CareCtrl'
+
+					.when '/team',
+						templateUrl: '/partials/app/modules/team/team.html'
+						controller: 'TeamCtrl'
+
+					.when '/parent',
+						templateUrl: '/partials/app/modules/parentswork/parentswork.html'
+						controller: 'ParentsWorkCtrl'
+
+					.when '/dependencies',
+						templateUrl: '/partials/app/modules/dependencies/dependencies.html'
+						controller: 'DependenciesCtrl'	
 
 					.when '/contact',
 						templateUrl: '/partials/app/modules/contact/contact.html'
