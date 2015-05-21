@@ -1,7 +1,33 @@
 mymeanjs
 ========
-A scalable and modularizable architecture for nodejs and angularjs app.
+A scalable and modularizable architecture for nodejs and angularjs app (MEAN Stack).
 
+Technologies
+===========
+# Node.js 
+# Express framework.
+# Angular.js
+# Bootstrap
+# Mongo DB
+
+Features
+========
+# Backend
+    Node.js with Express Framework
+    REST api
+    Mongo DB, using Mongoose
+    Api Authentication using Bearer token, powered by Json Web Token (JWT)
+    Jade as template engine
+    Coffee Script
+    Grunt
+    npm
+    Bower
+
+# Frontend
+    Angular.js
+    Bootstrap (Responsive)
+    Remember me (based on session storage)
+    Architecture based in reusable modules
 
 # Prerequisites to install
     
