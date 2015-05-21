@@ -45,25 +45,29 @@ Features
 # Installation & start
 
     # clone repo
-    git clone https://github.com/cbaeza/mymeanjs.git 
+    $ git clone https://github.com/cbaeza/mymeanjs.git 
     # change to project
-    cd mymeanjs
+    $ cd mymeanjs
     # install node packages
-    npm install
+    $ npm install
     # install bower packages
-    bower install
+    $ bower install
     # restore db
-    mongorestore -db db/dump/mymean
+    $ mongorestore -db db/dump/mymean
     # compile client  
-    grunt build-client
+    $ grunt build-client
     # start server
-    npm start
+    $ npm start
     # call site
     http://localhost:3030
 
-## Utils
+## Test user
     
-    {
-    "email":"carlos.baeza@posteo.de",
-    "password":"c79c6f489015e0bc97f892e357db7156"
-    }
+    user: test@test.de
+    password: test
+
+## Admin user
+    
+    user: admin@mymeanjs.de
+    password: adminadmin    
+    
