@@ -29,6 +29,9 @@ Features
     - Bootstrap (Responsive)
     - Remember me (based on session storage)
     - Architecture based in reusable modules
+    - Register user
+    - Login for register users
+    - User roles 
 
 # Prerequisites to install
     
@@ -37,18 +40,25 @@ Features
     sudo npm -g install express
     sudo npm -g install grunt-cli
 
-# Compile client
+# Installation & start
 
+    # clone repo
+    git clone https://github.com/cbaeza/mymeanjs.git 
+    # change to project
+    cd mymeanjs
+    # install node packages
+    npm install
+    # install bower packages
+    bower install
+    # restore db
+    mongorestore -db db/dump/mymean
+    # compile client  
     grunt build-client
-
-# Automatically compile all changed files in client
-    
-    grunt client-watch
-    
-# Start server
-
+    # start server
     npm start
-    
+    # call site
+    http://localhost:3030
+
 ## Utils
     
     {
