@@ -24,7 +24,6 @@ Features
     - Coffee Script
     - Grunt
     - npm
-    - Bower
 
 # Frontend
     - Angular.js
@@ -34,6 +33,7 @@ Features
     - Register user
     - Login for register users
     - User roles 
+    - Bower
 
 # Prerequisites to install
     
