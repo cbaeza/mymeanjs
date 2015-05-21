@@ -2,6 +2,8 @@ MyMeanJs
 ========
 A scalable, modularizable and reutilizable architecture for node.js and angular.js app (MEAN Stack).
 
+![Alternativer Text](/docs/images/mymean.png)
+
 Technologies
 ===========
     - Node.js 
