@@ -12,6 +12,10 @@
    background-color: #f4aeb6;
 }
 
+.navbar-header .icon-bar{
+  background-color: #fff;
+}
+
 /* visited link */
 nav a:visited
 a:focus {
