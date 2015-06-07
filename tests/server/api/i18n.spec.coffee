@@ -14,7 +14,7 @@ describe 'i18n api', ->
 			expect( res.statusCode ).to.equal( 200 )
 			labels = JSON.parse( body )
 
-			expect( labels ).to.be.instanceof(Object)
+			expect( labels ).to.be.instanceof(Array)
 			expect( labels ).not.to.be.empty
 
 			done()
@@ -28,7 +28,7 @@ describe 'i18n api', ->
 			expect( res.statusCode ).to.equal( 200 )
 			labels = JSON.parse( body )
 
-			expect( labels ).to.be.instanceof(Object)
+			expect( labels ).to.be.instanceof(Array)
 			expect( labels ).not.to.be.empty
 
 			done()
@@ -42,7 +42,7 @@ describe 'i18n api', ->
 			expect( res.statusCode ).to.equal( 200 )
 			labels = JSON.parse( body )
 
-			expect( labels ).to.be.instanceof(Object)
+			expect( labels ).to.be.instanceof(Array)
 			expect( labels ).not.to.be.empty
 
 			done()
@@ -56,7 +56,7 @@ describe 'i18n api', ->
 			expect( res.statusCode ).to.equal( 200 )
 			labels = JSON.parse( body )
 
-			expect( labels ).to.be.instanceof(Object)
+			expect( labels ).to.be.instanceof(Array)
 			expect( labels ).not.to.be.empty
 
 			done()
