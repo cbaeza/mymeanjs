@@ -44,6 +44,7 @@
     "node-uuid": "^1.4.2"
   },
   "devDependencies": {
+    "chai": "^2.3.0",
     "coffee-script": "^1.8.0",
     "grunt": "^0.4.5",
     "grunt-contrib-coffee": "^0.12.0",
@@ -52,9 +53,12 @@
     "grunt-contrib-jade": "^0.13.0",
     "grunt-contrib-uglify": "^0.6.0",
     "grunt-includes": "^0.4.5",
-    "grunt-text-replace": "^0.3.12",
+    "grunt-mocha-test": "^0.12.7",
     "grunt-node-inspector": "~0.1.5",
+    "grunt-text-replace": "^0.3.12",
     "load-grunt-tasks": "^0.6.0",
-    "node-inspector": "~0.7.4"
+    "mocha": "^2.2.5",
+    "node-inspector": "~0.7.4",
+    "request": "^2.57.0"
   }
 }

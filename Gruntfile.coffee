@@ -119,6 +119,14 @@ module.exports = (grunt) ->
 					ext: 'coffee,jade,json'
 					watch: ['server/**/*']
 
+		# testing server side api's
+		mochaTest:
+			api:
+				options:
+					reporter: 'spec'
+					require: 'coffee-script/register'
+				src: ['tests/server/api/**/*.spec.coffee']
+
 		'node-inspector':
 			debug: {}
 
@@ -132,11 +140,13 @@ module.exports = (grunt) ->
 				options:
 					logConcurrentOutput: true
 
+
 	grunt
-		.registerTask( 'default',       [ 'uglify'] )
-		.registerTask( 'client-watch',  [ 'watch:clientApp' ] )
-		.registerTask( 'debug', 		[ 'concurrent:debug' ] )
-		.registerTask( 'build-client',  [
+		.registerTask( 'default',		[ 'uglify'] )
+		.registerTask( 'client-watch',	[ 'watch:clientApp' ] )
+		.registerTask( 'debug',			[ 'concurrent:debug' ] )
+		.registerTask( 'test-api',		[ 'mochaTest' ] )
+		.registerTask( 'build-client',	[
 			#'compass:dist'
 			'jade:inline'
 			'jade:templates'

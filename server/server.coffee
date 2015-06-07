@@ -1,5 +1,5 @@
 express 		= require('express')
-methodOverride 	= require('method-override')
+#methodOverride 	= require('method-override')
 bodyParser		= require('body-parser')
 #cookieparser    = require("cookie-parser")
 session			= require('express-session')
@@ -19,10 +19,10 @@ app.set 'view engine', 'jade'
 app.set 'views', "./server/views"
 
 # use methodOverride to simplify access to http methods
-app.use methodOverride()
+#app.use methodOverride()
 
 # parse application/json
-app.use bodyParser.json()
+#app.use bodyParser.json()
 
 # all static resources
 app.use express.static( "./public" )
