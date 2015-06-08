@@ -113,6 +113,14 @@ angular
 			# Sign in
 			#
 			#######################################################
+
+			$scope.template = {
+				title : 'Sign in'
+				content : 'some content'
+				templateUrl: '/partials/app/templates/popover/signin.html'
+			}
+
+			# will be replaced by popover
 			$scope.openSignInDialog = ( event ) ->
 				console.log( 'sign in')
 				event.preventDefault()
