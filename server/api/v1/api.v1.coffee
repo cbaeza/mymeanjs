@@ -36,6 +36,7 @@ module.exports = ( app, secret ) ->
 	app
 		# AUTH using JWT (JSON web token). If user match, it return a session token
 		.post( '/auth/login', (req, res) ->
+			console.log( req.body )
 			UserModel.authenticate req.body, ( error, user ) ->
 				return res.status(400).json({ 'error' : error }) if error
 				

@@ -22,7 +22,7 @@ app.set 'views', "./server/views"
 #app.use methodOverride()
 
 # parse application/json
-#app.use bodyParser.json()
+app.use bodyParser.json()
 
 # all static resources
 app.use express.static( "./public" )

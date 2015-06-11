@@ -12,7 +12,7 @@ Profile = require('../profile/profile.mdl')
 module.exports =
 
 	login: ( req, res ) ->
-		#console.log( req.body )
+		console.log( req.body )
 		UserModel.authenticate req.body, ( error, user ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			#console.log(user)
