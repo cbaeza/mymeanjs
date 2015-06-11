@@ -67,8 +67,8 @@ module.exports = ( app, secret ) ->
 		#
 		#################################################################
 
-		#.post( '/auth/login' 			, UserCtrl.login )
-		#.post( '/auth/logout' 			, UserCtrl.logout )
+		#.post( '/auth/login' 			, UserCtrl.login ) # deprecated by JWT
+		#.post( '/auth/logout' 			, UserCtrl.logout ) # deprecated by JWT
 		.post( '/auth/accounts'			, UserCtrl.create )
 		.post( '/auth/account/verify'	, UserCtrl.verify )
 

@@ -55,6 +55,15 @@ require('./api/v1/api.v1')( app, secret )
 # default routes
 require('./routes/routes')( app )
 
+# error handling
+app.use (err, req, res, next) ->
+	if (err.name is 'UnauthorizedError')
+		console.log(err)
+		res.status(401).send('invalid token...')
+	else
+		console.log(err)
+		res.status(400).send('Some error...' + err)
+
 # start server
 app.listen 3030, ( ) ->
 	console.log "Server started, listen on port #{app.get('port')}"
