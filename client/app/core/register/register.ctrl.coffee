@@ -30,6 +30,9 @@ angular
 						( data ) ->
 							console.log "register done"
 							$scope.isRegister = true
+
+						( error ) ->
+							SystemMessages.danger(error)
 					)
 
 				$scope.close = ( event ) ->

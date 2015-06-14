@@ -59,10 +59,10 @@ require('./routes/routes')( app )
 app.use (err, req, res, next) ->
 	if (err.name is 'UnauthorizedError')
 		console.log(err)
-		res.status(401).send('invalid token...')
+		res.status(401).send( 'error' : 'invalid token...')
 	else
 		console.log(err)
-		res.status(400).send('Some error...' + err)
+		res.status(400).send( 'error' : 'Some error...' + err)
 
 # start server
 app.listen 3030, ( ) ->

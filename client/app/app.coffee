@@ -84,7 +84,10 @@ angular
 					.when '/news',
 						templateUrl: '/partials/app/modules/news/news.html'
 						controller: 'NewsCtrl'
-						resolve: routeRoleChecks.authenticated_user
+						resolve: {
+							roles: ()->
+								routeRoleChecks.authenticated_user
+						}
 
 					.when '/messages',
 						templateUrl: '/partials/app/modules/messages/messages.html'
@@ -113,7 +116,9 @@ angular
 								'ProfilesSrvc'
 								($route, ProfilesSrvc) ->
 									console.log("resolving : " + $route.current.params.id)
-									return ProfilesSrvc.getProfile($route.current.params.id)
+									p = ProfilesSrvc.getProfile($route.current.params.id)
+									console.log p
+									return p
 							]
 						}
 
@@ -172,8 +177,13 @@ angular
 		]).run(
 			( $rootScope, $location, SystemMessages ) ->
 				$rootScope.$on('$routeChangeError', (evt, current, previous, rejection) ->
+					console.log('$routeChangeError')
 					if rejection is 'not authorized'
 						SystemMessages.warning('not authorized')
+						return $location.path('/')
+					else
+						SystemMessages.warning(rejection.statusText + ' ' + rejection.data.error)
+						console.log(rejection)
 						return $location.path('/')
 				)
 	)
