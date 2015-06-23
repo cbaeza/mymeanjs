@@ -51,7 +51,7 @@ module.exports = ( app, secret ) ->
 		.post( '/auth/logout', (req, res) ->
 			# TODO: how to expire a token ?
 			console.log("OK, logout")
-			res.status(200).json( 'message': 'logged out')
+			res.status(200).send()
 		)
 
 		#################################################################

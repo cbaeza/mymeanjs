@@ -57,7 +57,7 @@ describe 'authenticate valid user', ->
 			done()
 
 describe 'de authenticate valid user', ->
-	it 'should return ok', (done) ->
+	it 'should return 200', (done) ->
 		request {
 			method: 'POST'
 			uri: "#{ENDPOINT}/logout"
