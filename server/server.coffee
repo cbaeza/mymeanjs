@@ -30,10 +30,10 @@ app.use express.static( "./public" )
 app.use express.static( "./bower_components" )
 
 # jwt implementation
-app.use config.api_route, expressJwt( {secret: config.secret} )
+app.use config.api_path, expressJwt( {secret: config.secret} )
 
 # session mgmt
-app.use config.api_route, sessionMgmt
+app.use config.api_path, sessionMgmt
 
 # cookie based session
 #app.use cookieparser()

@@ -3,10 +3,10 @@ module.exports =
 		port		: process.env.PORT || 3030
 		db			: 'mongodb://localhost/mymean'
 		secret 		: 'My-Mean-Secret'
-		api_route	: '/api/*'
+		api_path	: '/api/*'
 
 	production:
 		port		: process.env.PORT || 80
 		db			: 'mongodb://'
 		secret 		: 'My-Mean-Secret'
-		api_route	: '/api/*'
+		api_path	: '/api/*'
