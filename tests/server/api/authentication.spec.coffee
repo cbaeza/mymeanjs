@@ -30,11 +30,11 @@ describe 'authenticate valid user', ->
 
 			expect( result ).not.to.be.empty
 
-			expect( result ).to.have.property('token')
-			expect( result.token ).not.to.be.empty
-
 			expect( result ).to.have.property('user')
 			expect( result.user ).not.to.be.empty
+
+			expect( result.user ).to.have.property('token')
+			expect( result.user.token ).not.to.be.empty
 
 			expect( result.user ).to.have.property('_id')
 			expect( result.user._id ).not.to.be.empty

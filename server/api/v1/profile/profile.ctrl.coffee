@@ -5,7 +5,7 @@ module.exports =
 
 	getProfile : ( req, res ) ->
 		q = req.params.id
-		console.log(q)
+		#console.log(q)
 		# check if id is id
 		checkForHexRegExp = new RegExp("^[0-9a-fA-F]{24}$")
 		# case insensitive query
@@ -16,7 +16,7 @@ module.exports =
 		else
 			query = { $or : [ { email : r }, { name : r }, { lastname : r } ] }
 
-		console.log(query)
+		#console.log(query)
 		Profile.findOne( query, ( error, result ) ->
 			return res.status(400).json({ 'error' : error }) if error
 			return res.status(200).send( 'message' : 'not profile found' ) if not result

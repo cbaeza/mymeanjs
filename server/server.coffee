@@ -4,12 +4,13 @@ bodyParser		= require('body-parser')
 #cookieparser    = require("cookie-parser")
 session			= require('express-session')
 expressJwt 		= require('express-jwt')
-
+sessionMgmt 	= require('./middelware/session/sessionManager')
 
 
 env = process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 # init config passing current environment
 config = require('./config/config')[env]
+#console.log config
 
 app = express()
 
@@ -29,8 +30,10 @@ app.use express.static( "./public" )
 app.use express.static( "./bower_components" )
 
 # jwt implementation
-secret = 'My-Mean-Secret'
-app.use '/api/*', expressJwt( {secret: secret} )
+app.use config.api_route, expressJwt( {secret: config.secret} )
+
+# session mgmt
+app.use config.api_route, sessionMgmt
 
 # cookie based session
 #app.use cookieparser()
@@ -50,7 +53,7 @@ app.use '/api/*', expressJwt( {secret: secret} )
 require('./config/mongo')( config )
 
 # api, define api always first as default routes
-require('./api/v1/api.v1')( app, secret )
+require('./api/v1/api.v1')( app, config )
 
 # default routes
 require('./routes/routes')( app )
