@@ -53,7 +53,7 @@ Features
     # install bower packages
     $ bower install
     # restore db
-    $ mongorestore -db db/dump/mymean
+    $ mongorestore -db db/dump/mymean --db mymean
     # compile client  
     $ grunt build-client
     # start server
