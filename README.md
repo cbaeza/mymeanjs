@@ -71,3 +71,8 @@ Features
     user: admin@mymeanjs.de
     password: adminadmin    
     
+## Roadmap (TODOs)
+- Enable admin modules (user management and and roles).
+- Enable News module management.
+- Improve main menu css and responsive.
+- Upload pictures module.
