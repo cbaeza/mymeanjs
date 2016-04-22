@@ -5,3 +5,4 @@ bower_components
 .idea
 public
 npm-debug.log
+*.iml
